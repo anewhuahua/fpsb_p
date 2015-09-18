@@ -69,6 +69,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
     controller: 'mainCtrl'
   })
 
+
   .state('main.index', {
     url: '/index',
     views: {
@@ -85,12 +86,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
       'main-products': {
          templateUrl: 'templates/main/products.html',
          controller: 'mainProductsCtrl'
-      },
-
-      'main-categories': {
-         templateUrl: 'templates/main/categories.html',
-         controller: 'mainCategoriesCtrl'
-         
       }
     }
   })

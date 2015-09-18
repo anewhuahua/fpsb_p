@@ -417,7 +417,6 @@ angular.module('starter.controllers', [])
 })
 
 
-
 .controller('mainIndexCtrl', function($scope, $cordovaCamera, Main) {
 
   //Rest.getProducts({type:'privatefunds'});
@@ -433,11 +432,11 @@ angular.module('starter.controllers', [])
   });  
 })
 
-
+/*
 .controller('mainCategoriesCtrl', function($scope,$ionicPopover,$stateParams, Main) {
   $scope.data.categories = Main.getCategories();
   $scope.selectedCategory = $stateParams.categoryID;
-})
+})*/
 
 .controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams,$state, Main) {
   $scope.data = {
@@ -445,6 +444,8 @@ angular.module('starter.controllers', [])
     category:{},
     more:true
   };
+  $scope.data.categories = Main.getCategories();
+  $scope.selectedCategory = $stateParams.categoryID;
 
   var cid = $stateParams.categoryID;
 

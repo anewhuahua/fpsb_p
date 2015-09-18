@@ -1,14 +1,41 @@
+<ion-side-menus>
+  <!-- Left menu -->
+  <ion-side-menu side="left">
+    <div class="list has-header">
 
-<ion-view class="common-person-view">
- 
+        <!--
+           <a class="item item-avatar"  href="#/main/products/categories/1" ng-class="{'item-energized' : selectedCategory==1}" ng-click="selectedCategory = 1">-->
 
-  <!--<ion-nav-buttons side="left">
-      <a class="button  button-icon button-clear ion-navicon" ng-click="popover.show($event);">
-      </a>
-        
-  </ion-nav-buttons>-->
+    
 
+            <a class="item item-avatar"  href="#/main/products/categories/{{category.id}}" ng-class="{'item-energized' : selectedCategory=={{category.id}}}" ng-repeat="category in data.categories">
+              <img src="{{category.image}}"/>
+              {{category.name}}
+            </a>
+            <!--
+            <a class="item item-avatar" href="#/main/products/categories/2" ng-class="{'item-energized' : selectedCategory==2}"> 
+              <img src="img/lbanr1img1.png"/>
+              私募基金
+            </a>
+            <a class="item item-avatar" href="#/main/products/categories/3" ng-class="{'item-energized' : selectedCategory==3}">
+              <img src="img/lbanr1img3.png"/>
+              信托产品
+            </a>
+            <a class="item item-avatar" href="#/main/products/categories/4" ng-class="{'item-energized' : selectedCategory==4}">
+              <img src="img/lbanr1img4.png"/>
+              保险产品
+            </a>
+             <a class="item item-avatar" href="#/main/products/categories/5" ng-class="{'item-energized' : selectedCategory==5}">
+              <img src="img/lbanr1img5.png"/>
+              服务产品
+            </a>-->
+      </div>
+  </ion-side-menu>
 
+  <ion-side-menu-content>
+  <!-- Main content, usually <ion-nav-view> -->
+  <ion-view>
+    
     <ion-content>
        <ion-refresher
               refreshing-text="数据正在加载中..."
@@ -42,7 +69,7 @@
 
   
        
-<div class="main1"><!-- 中间内容开始 -->  
+  <div class="main1"><!-- 中间内容开始 -->  
 
 
             <div class="gnr2dadv"><!--内容右侧开始-->
@@ -148,8 +175,16 @@
       </ion-popover-view>
     </script>
 -->
-  <multiple-views-support width="75%" />
+ 
 </ion-view>
+
+
+
+  </ion-side-menu-content>
+
+
+</ion-side-menus>
+
 
 
 
