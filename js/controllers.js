@@ -438,7 +438,54 @@ angular.module('starter.controllers', [])
   $scope.selectedCategory = $stateParams.categoryID;
 })*/
 
-.controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams,$state, Main) {
+.controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams,$state, $ionicSideMenuDelegate, Main) {
+
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+
+
+  // .fromTemplateUrl() method
+  $ionicPopover.fromTemplateUrl('filter-popover.html', {
+    scope: $scope
+  }).then(function(popover) {
+    $scope.popoverFilter = popover;
+  });
+
+  $ionicPopover.fromTemplateUrl('sort-popover.html', {
+    scope: $scope
+  }).then(function(popover) {
+    $scope.popoverSort = popover;
+  });
+
+  $scope.popFilter = function($event) {
+    $scope.popoverFilter.show($event);
+  };
+  $scope.popSort = function($event) {
+    $scope.popoverSort.show($event);
+  };
+  $scope.closePopFilter = function() {
+    $scope.popoverFilter.hide();
+  };
+  $scope.closePopSort = function() {
+    $scope.popoverSort.hide();
+  };
+
+  //Cleanup the popover when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.popover.remove();
+  });
+  // Execute action on hide popover
+  $scope.$on('popover.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove popover
+  $scope.$on('popover.removed', function() {
+    // Execute action
+  });
+
+
+
   $scope.data = {
     products:[],
     category:{},

@@ -18,7 +18,7 @@
 	height: 150px;
 	width: 100%;
 }
-
+/*
 .bar-header {
    height:0.88rem;
 
@@ -32,7 +32,7 @@
 .has-header {
    top: 0.88rem;
 }
-
+*/
 input[type=”button”], input[type=”submit”], input[type=”reset”] {-webkit-appearance: none;}
 
 :-moz-placeholder { 
@@ -57,6 +57,7 @@ textarea::-webkit-input-placeholder {
 a{text-decoration:none; color:#000;}
 
 /* 头部 */
+/*
 .header
 {
     position: absolute;
@@ -80,10 +81,10 @@ a{text-decoration:none; color:#000;}
 .headfdv{background:url(../teImg/hdflog.png) no-repeat; background-size:cover; width:0.34rem; height:0.34rem; position:absolute; left:0.3rem;top:0.23rem; z-index:99; display:block;}
 .hdlogotit{width:65%; height:0.8rem; margin:auto;font-size:0.36rem;color:#103769;line-height:0.8rem;text-align:center; overflow:hidden;}
 .headrdv{background:url(../teImg/hddhlog.png) no-repeat;width:0.42rem; height:0.34rem; background-size:cover;position:absolute; right:0.3rem;top:0.23rem; z-index:99;}
+*/
 
 
-
-.content{color:#333; width:100%;height:100%;overflow: hidden; position:absolute;top:0;padding-top:0.8rem; padding-bottom:1rem;min-width:3.2rem;margin:0 auto;max-width:7.5rem;background: #f7f7f7;}
+.content{color:#333; width:100%;height:100%;overflow: hidden; position:absolute;top:0;padding-top:0.8rem; padding-bottom:1rem;min-width:3.2rem;margin:0 auto;background: #f7f7f7;}
 .main1 {width: 100%;height: 100%;position:relative;overflow:auto;overflow-x:hidden;text-align:left;}
 
 
@@ -156,7 +157,7 @@ a{text-decoration:none; color:#000;}
 
 
 /* 发现保险列表 */
-.fxbxlbul{width:95%; height:0.65rem; margin:0.2rem auto 0.15rem auto;overflow:hidden;}
+.fxbxlbul{width:95%; height:0.65rem; margin:0.5rem auto 0.15rem auto;overflow:hidden;}
 .fxbxlbul>li{width:49.7%; height:0.65rem; overflow:hidden;background:#fff;}
 .fxbxlbul>li>span{display:block;font-size:0.28rem;color:#686868; line-height:0.65rem; float:left; padding-left:31%;}
 .fxbxlbul>li>em{display:block; background:url(../teImg/bxlbxjt.png) no-repeat; width:0.33rem; height:0.13rem;float:left;margin:0.27rem 0rem 0rem 0.15rem; background-size:cover;}
