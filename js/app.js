@@ -90,6 +90,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
     }
   })
 
+
+
   .state('main.guest', {
     url: '/guest',
     views: {
@@ -138,6 +140,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
     abstract: true,
     templateUrl: 'templates/common.html',
     controller: 'commonCtrl'
+  })
+
+  .state('common.product', {
+    url: '/product/detail/:productID',
+    views: {
+      'common-product': {
+         templateUrl: 'templates/common/product.html',
+         controller: 'commonProductCtrl'
+      }
+    }
   })
 
   .state('common.booking_detail', {

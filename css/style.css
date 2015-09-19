@@ -1,6 +1,45 @@
 /* Empty. Add your own CSS if you like */
 
 
+@charset "utf-8";
+/* CSS Document */
+html,body,div,ul,ol,li,p,h3,h4,span,input,textarea,select,option,table,tr,td,h2,h1,dl,dt,dd,
+h5{padding:0;margin:0;box-sizing:border-box;-o-box-sizing:border-box;-ms-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+body{font-family:"微软雅黑";width:100%;height:100%;overflow: hidden;min-width:320px;color:#000;-moz-text-size-adjust:none;-webkit-text-size-adjust:none;text-size-adjust:none;font-size: 14px;-webkit-overflow-scrolling: touch; /* ios5+ */}
+img{border:none;}
+html{font-size:100px;}
+ul,li{list-style-type:none;}
+input{outline: none;}
+em,i{font-style:normal;}
+a{text-decoration:none; color:#000;}
+.clear{display: block;overflow: hidden;clear: both;height: 0;line-height: 0;font-size: 0;}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{height:1%;}
+.pr{position: relative;z-index: 0;}
+.pa{position: absolute;}
+.fl{float:left; display:block;}
+.fr{float:right; display:block;}
+.main{width:100%;height:100%;min-width:320px;margin:0 auto;max-width:750px;overflow: hidden;}
+.cls{ clear:both;}
+/****iconfont****/
+@font-face {font-family: 'iconfont';
+    src: url('../fonts/iconfont.eot'); 
+    src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'), 
+    url('../fonts/iconfont.woff') format('woff'), 
+    url('../fonts/iconfont.ttf') format('truetype'), 
+    url('../fonts/iconfont.svg#uxiconfont') format('svg'); 
+}
+.iconfont{
+    font-family:"iconfont" !important;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+
 .slider {
   height: 100%;
 }
@@ -55,15 +94,19 @@ textarea::-webkit-input-placeholder {
 
 
 a{text-decoration:none; color:#000;}
+a:visited {
+    color:#000;
+    text-decoration:none;
+}
 
 /* 头部 */
-/*
+
 .header
 {
     position: absolute;
-    top: 0.3rem;
+    top: 0.45rem;
     left: 0;
-    z-index: 999;
+    z-index: 10;
     width: 100%;
     height: 0.45rem;
     background: #FFF;
@@ -74,14 +117,14 @@ a{text-decoration:none; color:#000;}
 }
 
 .hdtopyy{ width:100%; height:0.1rem; position:absolute; top:0.8rem; background:url(../teImg/hdyytop.png) repeat-x;}
-.hdlogo{width:1.88rem; height:0.45rem; margin:0.00rem auto 0rem auto;}
+.hdlogo{width:2.38rem; height:0.52rem; margin:0.00rem auto 0rem auto;}
 .hdlogo>img{width:100%;}
-.hdrleft{background:url(../teImg/hdlogr.jpg) no-repeat;background-size:contain;width:0.44rem; height:0.38rem; position:absolute;top:0.1rem;left:0.22rem; font-size:0.12rem;color:#fff; line-height:0.15rem; padding-top:0rem; padding-left:0.33rem; display:block;}
-.hdrright{background:url(../teImg/hdlogr.jpg) no-repeat;background-size:contain;width:0.44rem; height:0.38rem; position:absolute;top:0.1rem;right:0.22rem; font-size:0.12rem;color:#fff; line-height:0.15rem; padding-top:0rem; padding-left:0.33rem; display:block;}
+.hdrpop{background:url(../teImg/hddhlog.png) no-repeat;background-size:contain;width:0.54rem; height:0.44rem; position:absolute;top:0.1rem;left:0.22rem; font-size:0.12rem;color:#fff; line-height:0.15rem; padding-top:0rem; padding-left:0.33rem; display:block;}
+.hdrback{background:url(../teImg/hdflog.png) no-repeat;background-size:contain;width:0.54rem; height:0.44rem; position:absolute;top:0.1rem;left:0.22rem; font-size:0.12rem;color:#fff; line-height:0.15rem; padding-top:0rem; padding-left:0.33rem; display:block;}
+.hdrright{background:url(../teImg/hdlogr.jpg) no-repeat;background-size:contain;width:0.64rem; height:0.44rem; position:absolute;top:0.0rem;right:0.22rem; font-size:0.12rem;color:#fff; line-height:0.15rem; padding-top:0rem; padding-left:0.33rem; display:block;}
 .headfdv{background:url(../teImg/hdflog.png) no-repeat; background-size:cover; width:0.34rem; height:0.34rem; position:absolute; left:0.3rem;top:0.23rem; z-index:99; display:block;}
 .hdlogotit{width:65%; height:0.8rem; margin:auto;font-size:0.36rem;color:#103769;line-height:0.8rem;text-align:center; overflow:hidden;}
-.headrdv{background:url(../teImg/hddhlog.png) no-repeat;width:0.42rem; height:0.34rem; background-size:cover;position:absolute; right:0.3rem;top:0.23rem; z-index:99;}
-*/
+
 
 
 .content{color:#333; width:100%;height:100%;overflow: hidden; position:absolute;top:0;padding-top:0.8rem; padding-bottom:1rem;min-width:3.2rem;margin:0 auto;background: #f7f7f7;}
@@ -156,6 +199,9 @@ a{text-decoration:none; color:#000;}
 
 
 
+
+
+
 /* 发现保险列表 */
 .fxbxlbul{width:95%; height:0.65rem; margin:0.5rem auto 0.15rem auto;overflow:hidden;}
 .fxbxlbul>li{width:49.7%; height:0.65rem; overflow:hidden;background:#fff;}
@@ -191,3 +237,40 @@ a{text-decoration:none; color:#000;}
 
 
 
+
+
+/* 境内服务,信托 详情页 -e */
+.xtuolbdv{width:95%; margin:auto; background:#fff; overflow:hidden; margin-bottom:0.1rem; padding-bottom:0.1rem;}
+.bxcpxqdv{width:95%; margin:0.2rem auto; background:#fff; border-radius:0.02rem; overflow:hidden;}
+.bcsnr1f{width:50%; float:left; margin-bottom:0.55rem;}
+.bcsnr1f>span{display:block;font-size:0.42rem; color:#e89440; line-height:0.42rem; margin:0.3rem auto 0.2rem auto; text-align:center;}
+.bcsnr1f>em{display:block;font-size:0.28rem; color:#395983; line-height:0.28rem;text-align:center;}
+.bcsnr1m{width:90%; margin:auto;height:0.75rem;}
+.bcsnr1m>p{float:left; padding:0rem 2.3%;}
+.bcsnr1m>p>span{font-size:0.24rem; color:#395983; line-height:0.24rem; float:left; margin-right:0.12rem;}
+.bcsnr1m>p>em{font-size:0.24rem; color:#e89440; line-height:0.24rem; float:left;}
+.bcsnr11d{overflow:hidden;}
+.bpxqbk2dv{width:95%; margin:0.2rem auto; background:#fff; border-radius:0.02rem; overflow:hidden; margin-bottom:0.2rem;}
+.bpbk2tit{height:0.65rem; display:block;font-size:0.28rem; color:#8b8b8b; line-height:0.65rem; border-bottom:0.01rem #efefef solid;padding-left:0.3rem; margin-bottom:0.2rem;}
+.bpxqbk2dv>p{overflow:hidden; margin-bottom:0.35rem; font-size:0.26rem; line-height:0.35rem;}
+.bpxqbk2dv>p>span{ width:36%; float:left; padding-left:0.3rem; overflow:hidden;color:#8b8b8b;}
+.bpxqbk2dv>p>em{ width:64%; float:right; overflow:hidden;color:#395983;}
+.bxxqbmdg{width:100%;height:1rem;  z-index:99999;font-size:0.32rem; line-height:1rem; text-align:center;}
+.fxyycpsg{float:left;width:50%; height:1rem; background:#d32e00;color:#fff;}
+.fxyycpyy{float:left;width:50%; height:1rem;background:#e79700;color:#fff;}
+.xtbldv{background:url(../teImg/xtblbj.png) no-repeat; background-size:cover; width:2.95rem; height:2.95rem; position:relative; margin:0.35rem auto 0.05rem auto;}
+.xtbldv>i{display:block; position:absolute; top:1.3rem; left:0rem; text-align:center;font-size:0.7rem; line-height:0.7rem; color:#e89440; width:100%;}
+.xtbldv>span{ width:100%;position:absolute; top:2.1rem; left:0rem;font-size:0.26rem; line-height:0.26rem; color:#395983; text-align:center;}
+.xtbldv>span>em{color:#e79340;}
+.bcsnr1m22{width:94%; margin:auto;height:0.75rem;}
+.bcsnr1m22>p{width:50%; height:0.3rem; overflow:hidden; float:left;font-size:0.26rem; line-height:0.26rem; color:#395983;text-align:center;}
+.bcsnr1m22>p>em{color:#e89440 !important;}
+/* 境内服务,信托 详情页 -e */
+
+/*提示页-s*/
+.tsdadv{position:fixed; z-index:99;width:100%; height:100%;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');background:rgba(55,55,55,0.6);display:none; }
+.tsma{width:70%; min-height:2rem; padding-bottom:0.6rem; background:#f3f2f5;position:absolute;left: 50%;margin-left:-35%;top: 50%;margin-top:-2.5rem;border-radius:0.06rem;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');background:rgba(55,55,55,0.7);}
+.tsma>img{ display:block;width:0.7rem; height:0.7rem; margin:0.6rem auto 0.3rem auto;}
+.tsma>span{ display:block; margin:auto;width:84%;font-size:0.3rem;color:#fff; line-height:0.5rem; text-align:center;}
+.tsma>span>em{ color:#e79700 !important;}
+/*提示页-s*/

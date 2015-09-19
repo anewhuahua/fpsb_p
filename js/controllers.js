@@ -45,6 +45,17 @@ angular.module('starter.controllers', [])
     $scope.data.looking_product = null;
   }
 })
+.controller('commonProductCtrl', function($scope,$ionicHistory, $stateParams, Main) {
+  pid = $stateParams.productID;
+  console.log(pid);
+
+  $scope.goBack = function() {
+    //console.log('sdafsag');
+    $ionicHistory.goBack();
+  }
+})
+
+
 .controller('bookingMenuCtrl', function($scope, $stateParams, $ionicHistory) {
 
 })
@@ -432,11 +443,8 @@ angular.module('starter.controllers', [])
   });  
 })
 
-/*
-.controller('mainCategoriesCtrl', function($scope,$ionicPopover,$stateParams, Main) {
-  $scope.data.categories = Main.getCategories();
-  $scope.selectedCategory = $stateParams.categoryID;
-})*/
+
+
 
 .controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams,$state, $ionicSideMenuDelegate, Main) {
 
@@ -445,7 +453,6 @@ angular.module('starter.controllers', [])
   };
 
 
-  // .fromTemplateUrl() method
   $ionicPopover.fromTemplateUrl('filter-popover.html', {
     scope: $scope
   }).then(function(popover) {

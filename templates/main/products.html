@@ -1,4 +1,4 @@
-
+<!--
 <ion-nav-bar class="bar-dark">
   <ion-nav-buttons side="left">
    <button ng-click="toggleLeft()" class="button button-icon icon ion-navicon"></button>
@@ -6,8 +6,16 @@
       <ion-nav-title>
       发现
     </ion-nav-title>
+</ion-nav-bar>-->
+<ion-nav-bar>
+      <ion-nav-title>
+      <br/>首席金服
+    </ion-nav-title>
 </ion-nav-bar>
-
+<div class="header">
+      <div class="hdlogo"><img src="teImg/telogo.jpg" /></div>
+      <div class="hdrpop" ng-click="toggleLeft()"></div>
+</div>
 
 <ion-side-menus>
   <!-- Left menu -->
@@ -88,7 +96,8 @@
             <li class="fxbxlbulib" ng-click="popFilter($event)"><span>筛选</span><em></em></li> 
           </ul> 
 
-          <div class="xtuolbdv" ng-repeat="product in data.products" ng-click="showProduct(product)">  
+          <div class="xtuolbdv" ng-repeat="product in data.products">  
+              <a href="#/common/product/detail/{{product.id}}">
               <div class="xxlsrrp">
                  <span class="xxlsyyss1">推荐</span>
                  <span class="xxlsyyss2">热销</span>
@@ -104,6 +113,7 @@
                       <span>剩余时间 <em> 21 </em>天</span>
                     </div>
                 </div>  
+              </a>
            </div> 
 
    
@@ -180,7 +190,23 @@
   <ion-popover-view>
     
     <ion-content>
-      Hello!
+
+      <a class="item"  href="">
+          默认排序
+      </a>
+      <a class="item"  href="">
+          客户收益
+      </a>
+      <a class="item"  href="">
+          投资期限
+      </a>
+      <a class="item"  href="">
+          起投金额
+      </a>
+       <a class="item"  href="">
+          抢购进度
+      </a>
+
     </ion-content>
   </ion-popover-view>
 </script>
@@ -191,7 +217,21 @@
   <ion-popover-view>
     
     <ion-content>
-      Hello sdfsdg!
+      <a class="item"  href="">
+          默认排序
+      </a>
+      <a class="item"  href="">
+          客户收益
+      </a>
+      <a class="item"  href="">
+          投资期限
+      </a>
+      <a class="item"  href="">
+          起投金额
+      </a>
+       <a class="item"  href="">
+          抢购进度
+          </a>
     </ion-content>
   </ion-popover-view>
 </script>
