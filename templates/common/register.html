@@ -1,0 +1,84 @@
+<!--
+<ion-nav-bar class="bar-dark">
+  <ion-nav-buttons side="left">
+   <button ng-click="toggleLeft()" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+      <ion-nav-title>
+      发现
+    </ion-nav-title>
+</ion-nav-bar>-->
+<ion-nav-bar>
+      <ion-nav-title>
+      <br/>首席金服
+    </ion-nav-title>
+</ion-nav-bar>
+<div class="header">
+      <div class="hdlogo"><img src="teImg/telogo.jpg" /></div>
+      <div class="hdrback" ng-click="goBack()"></div>
+</div>
+
+<ion-view view-title="首席金服">
+  <ion-content class="content cls has-header">
+      
+
+
+        <div class="main1">
+            &nbsp;
+
+            <!-- 中间内容-s --> 
+            <div class="zcsjyzdadv" ng-if="auth.win=='register_2'">
+                <!--<div class="zctyzlogbj"><img src="teImg/lnbombj2.png" /></div>-->
+                <span class="zcwjtit2">您的手机号将作为登陆账号</span>
+                <form class="zcwjfrm">
+                   <div class="zctel">
+                     <span>手机号码</span>
+                     <input type="text" placeholder="请输入手机号码" ng-model="auth.register.username" ng-disabled="auth.register.askingVerify"/> 
+                   </div> 
+
+                   <div class="zcyzm">
+                     <span>验 证 码</span>
+                     <input type="text" placeholder="请输入验证码" ng-model="auth.register.verifyCode"/> 
+                      <button ng-click='askVerifyCode(auth.register.username)' ng-disabled="auth.register.askingVerify">{{auth.register.verifyWords}}</button>
+                   </div>
+
+                   <input  type="submit" class="zcwjnext" value="下一步" ng-click="register_2(auth.register.username, auth.register.verifyCode)"/>
+                   <em class="zcwjbz">首席金服将对您的信息严格保密，不会在任何地方泄露您的号码</em>
+                </form>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>  
+
+
+
+            <div class="zcsjyzdadv" ng-if="auth.win=='register_3'">      
+              <div class="zctyzlogbj"><img src="teImg/lnbombj2.png" /></div>     
+              <form class="zcwjfrm zcwjfrmmm">
+              
+                 <div class="zctel zctelmm">
+                   <span>您的密码</span>
+                   <input type="text" placeholder="请输入你的密码" ng-model="auth.register.password"/> 
+                 </div> 
+                 <div class="zctel zctelmm">
+                   <span>重复密码</span>
+                   <input type="text" placeholder="请重复输入你的密码" ng-model="auth.register.password2"/> 
+                 </div>
+                 <div class="zctel zctelmm">
+                   <span>推 荐 人</span>
+                   <input type="text" placeholder="请输入对方手机号码（选填）" /> 
+                 </div>
+                 <input  type="submit" class="zcwjnext" value="完成注册" ng-click="register_3(auth.register.username,auth.register.password, auth.register.password2, auth.register.verifyCode)"/>
+                 <p class="zcmmjs">
+                    <span><img src="teImg/zcmmjslog.jpg" /></span>
+                    <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
+                 </p>  
+               </form>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </div>          
+
+            
+      </div>
+
+  </ion-content>
+</ion-view>
+
+
+

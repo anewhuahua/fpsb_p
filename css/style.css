@@ -93,7 +93,7 @@ textarea::-webkit-input-placeholder {
 }
 
 
-a{text-decoration:none; color:#000;}
+a{text-decoration:none ; color:#000; }
 a:visited {
     color:#000;
     text-decoration:none;
@@ -256,8 +256,11 @@ a:visited {
 .bpxqbk2dv>p>span{ width:36%; float:left; padding-left:0.3rem; overflow:hidden;color:#8b8b8b;}
 .bpxqbk2dv>p>em{ width:64%; float:right; overflow:hidden;color:#395983;}
 .bxxqbmdg{width:100%;height:1rem;  z-index:99999;font-size:0.32rem; line-height:1rem; text-align:center;}
-.fxyycpsg{float:left;width:50%; height:1rem; background:#d32e00;color:#fff;}
-.fxyycpyy{float:left;width:50%; height:1rem;background:#e79700;color:#fff;}
+
+
+.fxyycpsg{float:left;width:50%; height:1rem; background:#d32e00;color:#fff !important;}
+.fxyycpyy{float:left;width:50%; height:1rem;background:#e79700;color:#fff !important;}
+
 .xtbldv{background:url(../teImg/xtblbj.png) no-repeat; background-size:cover; width:2.95rem; height:2.95rem; position:relative; margin:0.35rem auto 0.05rem auto;}
 .xtbldv>i{display:block; position:absolute; top:1.3rem; left:0rem; text-align:center;font-size:0.7rem; line-height:0.7rem; color:#e89440; width:100%;}
 .xtbldv>span{ width:100%;position:absolute; top:2.1rem; left:0rem;font-size:0.26rem; line-height:0.26rem; color:#395983; text-align:center;}
@@ -268,9 +271,53 @@ a:visited {
 /* 境内服务,信托 详情页 -e */
 
 /*提示页-s*/
-.tsdadv{position:fixed; z-index:99;width:100%; height:100%;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');background:rgba(55,55,55,0.6);display:none; }
+.tsdadv{position:fixed; z-index:99;width:100%; height:100%;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');background:rgba(55,55,55,0.6); }
 .tsma{width:70%; min-height:2rem; padding-bottom:0.6rem; background:#f3f2f5;position:absolute;left: 50%;margin-left:-35%;top: 50%;margin-top:-2.5rem;border-radius:0.06rem;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');background:rgba(55,55,55,0.7);}
 .tsma>img{ display:block;width:0.7rem; height:0.7rem; margin:0.6rem auto 0.3rem auto;}
 .tsma>span{ display:block; margin:auto;width:84%;font-size:0.3rem;color:#fff; line-height:0.5rem; text-align:center;}
 .tsma>span>em{ color:#e79700 !important;}
 /*提示页-s*/
+
+
+.zcsjyzdadv{width:100%; height:100%;background:#efefef; overflow:hidden;}
+.zctyzlogbj{width:65%; position:absolute;left:0rem; bottom:0rem; z-index:1;}
+.zctyzlogbj>img{ width:100%;}
+.zcwjtit2{display:block;width:90%; margin:auto;font-size:0.32rem; line-height:0.32rem;color:#635f6b;text-align:center;margin-top:0.5rem;}
+.zcwjfrm{position:relative; z-index:2;display:block; padding-top:0.2rem;}
+.zctel{margin:0.1rem auto 0rem auto;}
+.zctel,.zcyzm{width:95%; height:0.9rem;background:#fff; overflow:hidden;border-radius:0.03rem;}
+.zctel>span,.zctel>input,.zcyzm>span,.zcyzm>input{float:left;height:0.75rem; margin-top:0.08rem;font-size:0.36rem; line-height:0.8rem; background:none;background-color:#fff;}
+.zctel>span,.zcyzm>span{width:27%;color:#635f6b; text-align:center;}
+.zctel>input{width:71%;color:#1d1d26 !important; border:0rem; padding:0rem 0.1rem;}
+.zcyzm{margin:0.1rem auto 0rem auto;}
+.zcyzm>input{width:50%;color:#1d1d26 !important; border:0rem; padding:0rem 0.1rem;}
+.zcyzm>em{width:22%;float:left;height:0.75rem; margin-top:0.07rem;font-size:0.24rem; line-height:0.8rem; color:#e79700; border-left:0.02rem #f3f2f5 solid; text-align:center;}
+.zcyzm>button{width:22%;float:left;height:0.75rem; margin-top:0.07rem;font-size:0.24rem; line-height:0.8rem; color:#e79700;  text-align:center; background:none; border:none;}
+
+
+.zcwjnext{display:block;width:95%; height:1.18rem; margin:0.2rem auto; background:#e79700;font-size:0.36rem; line-height:1.18rem; color:#fff; text-align:center; border:0rem;border-radius:0.05rem !important;-webkit-appearance: none;}
+.zcwjbz{display:block;width:95%; margin:auto;font-size:0.24rem; line-height:0.24rem;color:#a8a8aa;text-align:center;margin-top:0.28rem;}
+.zcmmjs{width:65%; margin:0.27rem auto;font-size:0.24rem; line-height:0.27rem;color:#a8a8aa; overflow:hidden;}
+.zcmmjs>span{display:block; width:0.27rem; height:0.27rem; float:left;}
+.zcmmjs>span>img{width:100%;}
+.zcmmjs>em{display:block; float:left; margin-left:0.17rem;}
+.zcmmjs>em>i{color:#e79700;}
+.cpxqzfdadv{ margin-bottom:1.5rem;}
+.lbalogonew{ position:relative; z-index:99999;}
+.lbalnlogo{width:2.75rem; height:2.88rem;margin:1rem auto 0rem auto;}
+.lbalnlogo>img{width:100%;}
+.lbalnna{width:93%;height:0.89rem; overflow:hidden; margin:0.74rem auto 0rem auto;}
+.lbalnnalef{width:17%;height:0.89rem;float:left; background:#ffffff; border-radius:0.05rem 0rem 0rem 0.05rem;}
+.lbalnnalef>img{width:0.44rem; height:0.44rem; display:block; margin:auto; margin-top:0.22rem;}
+.lbalnnarig{display:block;width:82.5%; height:0.89rem !important;background:#ffffff; border-radius:0rem 0.05rem 0.05rem 0rem; float:right;padding-left:0.35rem !important; line-height:0.89rem; font-size:0.36rem !important; color:#1d1d26 !important; border:none;}
+.lbalnpwd{width:93%;height:0.89rem; overflow:hidden; margin:0.14rem auto 0rem auto;}
+.lbalnpwdlef{width:17%;height:0.89rem;float:left; background:#ffffff; border-radius:0.05rem 0rem 0rem 0.05rem;}
+.lbalnpwdlef>img{width:0.4rem; height:0.47rem; display:block; margin:auto; margin-top:0.2rem;}
+.lbalnpwdrig{display:block;width:82.5%; height:0.89rem !important;background:#ffffff; border-radius:0rem 0.05rem 0.05rem 0rem; float:right;padding-left:0.35rem !important; line-height:0.89rem; font-size:0.36rem !important; color:#1d1d26 !important; border:none;}
+.lbalndl{display:block;width:93%; height:1.18rem;text-align:center;background:#e79700;margin:0.23rem auto 0rem auto;border-radius:0.05rem;line-height:0.89rem; font-size:0.36rem !important; color:#ffffff !important; border:none;-webkit-appearance: none;}
+.lbalnbm{width:93%; height:0.3rem; margin:0.22rem auto 0rem auto;}
+.lbalnbmlf{float:left; font-size:0.3rem; color:#76727d; line-height:0.3rem;}
+.lbalnbrig{float:right;font-size:0.3rem; color:#76727d; line-height:0.3rem;}
+/* 注册-相关 -e */
+
+

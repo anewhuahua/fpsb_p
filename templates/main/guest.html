@@ -1,14 +1,39 @@
+<ion-nav-bar>
+      <ion-nav-title>
+      <br/>首席金服
+    </ion-nav-title>
+</ion-nav-bar>
+<div class="header">
+      <div class="hdlogo"><img src="teImg/telogo.jpg" /></div>
+</div>
 
-<ion-view class="common-main-view">
-
-
-
-  <ion-content>
-
-
+<ion-view>
+  <ion-content class="content cls has-header">
+        <div class="main1">
+                  <div class="zctyzlogbj"><img src="teImg/lnbombj2.png" /></div> 
+                  <div class="lbalnlogo"><img src="teImg/lnlogo.png" title="" alt=""></div>
+                  <form class="lbalogonew">
+                    <div class="lbalnna">
+                       <span class="lbalnnalef"><img src="teImg/lbalnyhmlog.png" title="" alt=""></span>
+                       <input type="text" class="lbalnnarig" placeholder="手机号码"  ng-model="auth.login.username"/>
+                    </div>
+                    <div class="lbalnpwd">
+                       <span class="lbalnpwdlef"><img src="teImg/lbalnpwd.png"></span>
+                       <input type="password" class="lbalnpwdrig" placeholder="密码"  ng-model="auth.login.password"/>
+                    </div> 
+                    <input type="submit"  class="lbalndl" value="登陆" ng-click="login(auth.login.username, auth.login.password)"/>
+                    <div class="lbalnbm">
+                        <a href="#/common/register" class="lbalnbmlf">注册新用户</a>
+                        <a href="" class="lbalnbrig">忘记密码？</a>
+                    </div>
+                  </form>
+                  
+    </div>
+    <!-- 主体部分结束 -->
+   
 
   </ion-content>
-
+  
   
 </ion-view>
 

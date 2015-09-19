@@ -28,23 +28,17 @@ angular.module('starter.controllers', [])
 
 .controller('commonCtrl', function($scope, $stateParams, $ionicHistory) {
   $scope.data = {
-    popup: ''
+     warning: {
+      status: '',
+      words: ''
+    }
   };
-  $scope.goBack = function() {
-    console.log('goback');
-    $ionicHistory.goBack();
-  }
-  $scope.showProduct = function(product) {
-    $scope.data.popup = 'privateFund';
-    $scope.data.looking_product = product;
-    console.log("looking product: "+product.id);
-    console.log(product);
-  }
-  $scope.closeProduct = function() {
-    $scope.data.popup = '';
-    $scope.data.looking_product = null;
-  }
+  $scope.closeWarning = function(win) {
+    $scope.data.warning.status='';
+    $scope.data.warning.words = '';
+  };
 })
+
 .controller('commonProductCtrl', function($scope,$ionicHistory, $stateParams, Main) {
   pid = $stateParams.productID;
   console.log(pid);
@@ -52,6 +46,109 @@ angular.module('starter.controllers', [])
   $scope.goBack = function() {
     //console.log('sdafsag');
     $ionicHistory.goBack();
+  }
+})
+.controller('commonRegisterCtrl', function($scope, $timeout, $state, $ionicHistory, Main) {
+
+
+  $scope.auth = {
+    register: {
+      verifyWords : '发送验证码',
+      askingVerify: false,
+      username: '',
+      password: '',
+      password2: '',
+      verifyCode: '',
+      returnCode: ''
+    },
+    win: 'register_2'
+  };
+
+  $scope.$on('$ionicView.enter',function(){
+    $scope.auth.win = 'register_2';
+  }); 
+
+  $scope.goBack = function() {
+    $state.go("main.guest");
+  }
+
+  $scope.register_2 = function(username, code) {
+    if(username == ''|| code == '') {
+      $scope.data.warning.status = 'fail';
+      $scope.data.warning.words = '请正确填写手机号和验证码';
+    } else if(code == $scope.auth.register.returnCode) {
+      $scope.auth.win = 'register_3';
+    } else if (code != $scope.auth.register.returnCode) {
+      $scope.data.warning.status = 'fail';
+      $scope.data.warning.words = '验证码错误';
+    } else {
+
+    }
+  }
+  $scope.register_3 = function(name, pwd, pwd2, code){
+   if(pwd == '') {
+      $scope.data.warning.status = 'fail';
+      $scope.data.warning.words = '请正确输入密码';
+    } else if(pwd != pwd2) {
+      $scope.data.warning.status = 'fail';
+      $scope.data.warning.words = '两次密码输入不一致';
+    } else {
+      Main.register(name,pwd,code, function(res){
+        $scope.data.warning.status = 'sucess';
+        $scope.data.warning.words = '恭喜注册成功';
+       
+        
+        setTimeout(function(){
+          $state.go("main.guest");
+        }, 500);
+
+      }, function(res){
+        $scope.data.warning.status = 'fail';
+        $scope.data.warning.words = '注册失败';
+      }, function(){
+      });
+    }
+  }
+
+  $scope.askVerifyCode = function(phone) {
+    $scope.auth.register.askingVerify = true;
+    console.log("ask");
+    /*
+    promise = $timeout(function(cnt){
+      $timeout(
+      $scope.user.verifyWords = cnt;
+      cnt = cnt-1;
+    }, 1000);*/
+
+    //timeout
+    var loopVerifyWords = function(cnt) 
+    {
+      promise = $timeout(function () { loopVerifyWords(cnt); }, 1000); 
+      //console.log("timeout "+cnt);
+      $scope.auth.register.verifyWords = cnt;
+      if (cnt == 0) {
+        $scope.auth.register.askingVerify = false;
+        $scope.auth.register.verifyWords = "发送验证码";
+        $timeout.cancel(promise);
+      }     
+      cnt = cnt-1;
+      //$scope.$on('$ionicView.leave',function(){
+      //  $scope.auth.register.askingVerify = false;
+      //  $timeout.cancel(promise);
+      //}); 
+    }; 
+    loopVerifyWords(30);
+
+    Main.askVerifyCode(phone, function(code){
+      $scope.auth.register.returnCode = code;
+      //console.log("tyson"+$scope.verifyCode);
+    }, function(){
+      // todo
+      $scope.data.warning.status = 'fail';
+      $scope.data.warning.words = '请检查网络状况';
+    }, function(){
+
+    });
   }
 })
 
@@ -263,34 +360,38 @@ angular.module('starter.controllers', [])
     $scope.data.popup = '';
   }
 
+    $scope.logout = function() {
+    $state.go('main.index');
+    Main.logout(function(profile){ 
+      $scope.data.person = profile;
+      $window.location.reload();
+    });
+  }
+ 
 
-  //$scope.verifyCode = "";
+})
+
+
+.controller('mainIndexCtrl', function($scope, $cordovaCamera, Main) {
+
+  //Rest.getProducts({type:'privatefunds'});
+  //Rest.login('customer','password');
+  $scope.data.categories = Main.getCategories();
+})
+
+
+
+.controller('mainGuestCtrl', function($scope, $window, $state, $ionicPopup, Main) {
+
+ //$scope.verifyCode = "";
   $scope.auth = {
-    register: {
-      verifyWords : '发送验证码',
-      askingVerify: false,
-      username: '',
-      password: '',
-      password2: '',
-      verifyCode: '',
-      returnCode: ''
-    },
+    
     login: {
       username:'',
       password:''
     }
   };
-  var clearRegister = function(){
-    $scope.auth.register.verifyWords = "发送验证码";
-    $scope.auth.register.askingVerify = false;
-    $scope.auth.register.verifyCode = '';
-    $scope.auth.register.returnCode ='';
-    $scope.auth.register.usernmae = '';
-    $scope.auth.register.password = '';
-    $scope.auth.register.password2 = '';
-    //$scope.auth.login.username ='';
-    //$scope.auth.login.password = '';
-  }
+
 
   $scope.login = function(username, password){
     // initialize
@@ -309,6 +410,9 @@ angular.module('starter.controllers', [])
       }, function(){
         $scope.data.warning.status = 'fail';
         $scope.data.warning.words = '请检查用户名和密码';
+
+   
+  
         //登入失败
       }, function(profile){
         $scope.auth.login.username = '';
@@ -317,130 +421,8 @@ angular.module('starter.controllers', [])
 
       });
   }
-  $scope.logout = function() {
-    $state.go('main.index');
-    Main.logout(function(profile){ 
-      $scope.data.person = profile;
-      $window.location.reload();
-    });
-  }
-  $scope.backLogin = function() {
-    $scope.data.popup = 'login';
-  }
-  $scope.register_1 = function() {
-    $scope.data.popup = 'register_1';
-  }
-  $scope.register_2 = function(username, code) {
-    if(username == ''|| code == '') {
-      $scope.data.warning.status = 'fail';
-      $scope.data.warning.words = '请正确填写手机号和验证码';
-    } else if(code == $scope.auth.register.returnCode) {
-      $scope.data.popup = 'register_2';
-    } else if (code != $scope.auth.register.returnCode) {
-      $scope.data.warning.status = 'fail';
-      $scope.data.warning.words = '验证码错误';
-    } else {
-
-    }
-
-    /*
-    if ($scope.verifyCode == code && code != "") {
-      $scope.win.register_1 = false;
-      $scope.win.register_2 = true;
-    } else {
-      console.log("not fit");
-      $scope.win.notify = true;
-    }*/
-  }
-  $scope.register_3 = function(name, pwd, pwd2, code){
-   if(pwd == '') {
-      $scope.data.warning.status = 'fail';
-      $scope.data.warning.words = '请正确输入密码';
-    } else if(pwd != pwd2) {
-      $scope.data.warning.status = 'fail';
-      $scope.data.warning.words = '两次密码输入不一致';
-    } else {
-      Main.register(name,pwd,code, function(res){
-        $scope.data.warning.status = 'sucess';
-        $scope.data.warning.words = '恭喜注册成功';
-        $scope.auth.login.username = $scope.auth.register.username;
-        clearRegister();
-        setTimeout(function(){
-          $scope.data.popup = 'login';
-        }, 500);
-      }, function(res){
-        $scope.data.warning.status = 'fail';
-        $scope.data.warning.words = '注册失败';
-      }, function(){
-      });
-    }
-    /*
-    Rest.register(name,password,code,function(){
-      $scope.win.register_1 = false;
-      $scope.win.register_2 = false;
-      $scope.win.stub = false;
-      $scope.win.main = true;
-    });*/
-  }
-
-  $scope.askVerifyCode = function(phone) {
-    //Main.login('1','1',function(){},function(){},function(){});
-    $scope.auth.register.askingVerify = true;
-    console.log("ask");
-    /*
-    promise = $timeout(function(cnt){
-      $timeout(
-      $scope.user.verifyWords = cnt;
-      cnt = cnt-1;
-    }, 1000);*/
-
-    //timeout
-    var loopVerifyWords = function(cnt) 
-    {
-      promise = $timeout(function () { loopVerifyWords(cnt); }, 1000); 
-      //console.log("timeout "+cnt);
-      $scope.auth.register.verifyWords = cnt;
-      if (cnt == 0) {
-        $scope.auth.register.askingVerify = false;
-        $scope.auth.register.verifyWords = "发送验证码";
-        $timeout.cancel(promise);
-      }     
-      cnt = cnt-1;
-      //$scope.$on('$ionicView.leave',function(){
-      //  $scope.auth.register.askingVerify = false;
-      //  $timeout.cancel(promise);
-      //}); 
-    }; 
-    loopVerifyWords(30);
-
-    Main.askVerifyCode(phone, function(code){
-      $scope.auth.register.returnCode = code;
-      //console.log("tyson"+$scope.verifyCode);
-    }, function(){
-      // todo
-      $scope.data.warning.status = 'fail';
-      $scope.data.warning.words = '请检查网络状况';
-    }, function(){
-
-    });
-  }
-
-})
 
 
-.controller('mainIndexCtrl', function($scope, $cordovaCamera, Main) {
-
-  //Rest.getProducts({type:'privatefunds'});
-  //Rest.login('customer','password');
-  $scope.data.categories = Main.getCategories();
-})
-.controller('mainGuestCtrl', function($scope, Main) {
-  $scope.$on('$ionicView.enter',function(){
-    $scope.data.popup='login';
-  });
-  $scope.$on('$ionicView.leave',function(){
-   $scope.data.popup='';
-  });  
 })
 
 
@@ -756,7 +738,7 @@ angular.module('starter.controllers', [])
   //**
   //** controller data
   $scope.customer = {
-    win: 'index',
+    win: 'bookings',
     suffix: '',
     //orders: 'orders',
     bookings: {},

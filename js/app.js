@@ -105,10 +105,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
   .state('main.my', {
     url: '/my',
     views: {
-      'main-my-menu': {
-         templateUrl: 'templates/main/my_menu.html',
-         controller: 'CustomerMenuCtrl'
-      },
+  
 
       'main-my-toolbox': {
          templateUrl: 'templates/main/my_toolbox.html',
@@ -140,6 +137,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
     abstract: true,
     templateUrl: 'templates/common.html',
     controller: 'commonCtrl'
+  })
+
+  .state('common.register', {
+    url: '/register',
+    views: {
+      'common-register': {
+         templateUrl: 'templates/common/register.html',
+         controller: 'commonRegisterCtrl'
+      }
+    }
   })
 
   .state('common.product', {

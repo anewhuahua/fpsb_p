@@ -1,3 +1,26 @@
+<!--提示页-->
+
+
+<div ng-switch on="data.warning.status">
+
+  <div class="tsdadv" ng-switch-when='success' ng-click='closeWarning()'>
+    <div class="tsma">
+      <img src="teImg/rctslog.png" />
+      <span>{{data.warning.words}}</span> 
+    </div>
+  </div>
+
+
+  <div class="tsdadv" ng-switch-when='fail' ng-click='closeWarning()'>
+    <div class="tsma">
+      <img src="teImg/lbatsk.png" />
+      <span>{{data.warning.words}}</span> 
+    </div>
+  </div>
+
+</div>
+
+<!--提示页-->
 
 
 <ion-tabs class="tabs-item-hide">
@@ -6,8 +29,7 @@
     <ion-nav-view name="order-detail"></ion-nav-view>
   </ion-tab>
   <ion-tab>
-    <ion-nav-view name="booking-menu"></ion-nav-view>
-    <ion-nav-view name="booking-detail"></ion-nav-view>
+    <ion-nav-view name="common-register"></ion-nav-view>
   </ion-tab>
 
   <ion-tab>
