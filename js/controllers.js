@@ -31,12 +31,19 @@ angular.module('starter.controllers', [])
      warning: {
       status: '',
       words: ''
+    },
+    popup: '',
+    photo: {
+      order:''
     }
   };
   $scope.closeWarning = function(win) {
     $scope.data.warning.status='';
     $scope.data.warning.words = '';
   };
+  $scope.closePopup = function() {
+    $scope.data.popup = '';
+  }
 })
 
 .controller('commonProductCtrl', function($scope,$ionicHistory, $stateParams, Main) {
@@ -172,20 +179,47 @@ angular.module('starter.controllers', [])
   //console.log($scope.booking);
 })
 
-.controller('orderDetailCtrl', function($scope, $stateParams, $ionicHistory, Main) {
+.controller('orderDetailCtrl', function($scope, $stateParams, $state, $cordovaCamera, Main) {
   //console.log('124455');
   var oid = $stateParams.orderId;
   console.log(oid);
 
   $scope.data.win = 'detail';
 
+
   $scope.selectWin = function(item){
     console.log(item);
     $scope.data.win=item;
   }
   $scope.goBack = function() {
-    $ionicHistory.goBack();
+    //console.log('111');
+    $state.go('main.my');
   }
+
+
+  $scope.takePhoto=function(){
+    var options = {  
+      quality: 50,  
+      destinationType: Camera.DestinationType.DATA_URL,  
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,  
+      allowEdit: false,  
+      encodingType: Camera.EncodingType.JPEG,  
+      cameraDirection: 1,
+      targetWidth: 800,  
+      targetHeight: 1000,  
+      popoverOptions: CameraPopoverOptions,  
+      saveToPhotoAlbum: false  
+    }
+    //console.log("tyson");
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+        //$scope.data.popup = 'photo';
+        $scope.data.photo.order = "data:image/jpeg;base64," + imageData; 
+        $scope.data.popup = 'photo';
+        //image.src = "data:image/jpeg;base64," + imageData;  
+      }, function(err) {  
+        // error  
+      });  
+   }
   //$scope.booking = Main.consultant.getBooking(bid);
   //console.log($scope.booking);
 })
@@ -275,17 +309,15 @@ angular.module('starter.controllers', [])
       console.log($scope.data.person.role);
     });
   
+ 
+  $scope.logout = function() {
+    $state.go('main.index');
+    Main.logout(function(profile){ 
+      $scope.data.person = profile;
+      $window.location.reload();
+    });
+  }
 
-  $scope.showProduct = function(product) {
-    $scope.data.popup = 'privateFund';
-    $scope.data.looking_product = product;
-    console.log("looking product: "+product.id);
-    console.log(product);
-  }
-  $scope.closeProduct = function() {
-    $scope.data.popup = '';
-    $scope.data.looking_product = null;
-  }
   $scope.closePopup = function(win) {
     if ($scope.data.popup == win) {
       $scope.data.popup = '';
@@ -772,13 +804,13 @@ angular.module('starter.controllers', [])
     refreshData();
     $scope.$broadcast('scroll.refreshComplete');
   }
+
   $scope.$on("AddBooking", function(event,msg) {
   // nothing to do now
   });
    $scope.$on("AddOrder", function(event,msg) {
   // nothing to do now
   });
-
 
 
   $scope.takePhoto=function(param){

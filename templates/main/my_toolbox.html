@@ -13,17 +13,50 @@
 <ion-side-menus>
   <!-- Left menu -->
   <ion-side-menu side="left">
-    <div class="list has-header">
-            <a menu-close class="item"  ng-click="selectItem('index')"  href="#/main/products/categories/{{category.id}}" ng-class="{'item-energized' : selectedCategory=='1'}">
-              总览
-            </a>
-             <a menu-close class="item"  ng-click="selectItem('orders')" href="#/main/products/categories/{{category.id}}" ng-class="{'item-energized' : selectedCategory=='1'}">
-              我的订单
-            </a>
-            <a menu-close class="item"  ng-click="selectItem('bookings')" href="#/main/products/categories/{{category.id}}" ng-class="{'item-energized' : selectedCategory=='1'}">
-              我的预约
-            </a>
-      </div>
+
+        <div class="content cls">
+          <div class="main1">
+
+           <ul class="gfnleful"><!-- 左边大分类开始-->
+              <li>
+                <div menu-close class="gfnulitp" ng-class="{'gjxtjcss':customer.win=='index'}" ng-click="selectItem('index')">
+                  <span>账户总览</span>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+              </li>
+              <li>
+                <div menu-close class="gfnulitp" ng-class="{'gjxtjcss':customer.win=='orders'}" ng-click="selectItem('orders')">
+                  <span>我的订单</span>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+              </li>
+             <li>
+                <div menu-close class="gfnulitp" ng-class="{'gjxtjcss':customer.win=='bookings'}" ng-click="selectItem('bookings')">
+                  <span>我的预约</span>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+              </li>
+              <li>
+                <div class="gfnulitp">
+                  <span>我的信息</span>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+               
+              </li>
+               <li>
+                <div class="gfnulitp" ng-click="logout()">
+                  <span>退出登入</span>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+               
+              </li>
+            
+            </ul><!-- 左边大分类结束-->
+
+        </div>
+    </div>
+
+
   </ion-side-menu>
   <ion-side-menu-content>
 
@@ -96,23 +129,23 @@
             <div class="gjxqbdddv"> 
              
               <ul class="qbgnr2nrul">
-                  <li ><a href="###" class="gjxqbcss">
+                  <li ><a href="" class="gjxqbcss">
                      <div><img src="teImg/gnr2rabm11a.png" title="" alt="" /></div>
                      <em>全部订单</em>
                   </a></li>
-                  <li><a href="###">
+                  <li><a href="">
                      <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
                      <em>待报备</em>
                   </a></li>
-                  <li><a href="###">
+                  <li><a href="">
                      <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
                      <em>待审核</em>
                   </a></li>
-                  <li><a href="##">
+                  <li><a href="">
                      <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
                      <em>已完成</em>
                   </a></li>
-                  <li><a href="##">
+                  <li><a href="">
                      <div><img src="teImg/gnr2rabm4.png" title="" alt="" /></div>
                      <em>历史订单</em>
                   </a></li>
