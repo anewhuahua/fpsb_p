@@ -54,17 +54,17 @@ a{text-decoration:none; color:#000;}
 }
 
 .bar-header {
-   height:1.25rem;
+   height:1.66rem;
 
 
 }
 .bar-header .title {
-   height:1.25rem;
-   line-height: 1.25rem;
+   height:1.66rem;
+   line-height: 1.66rem;
 }
 
 .has-header {
-   top: 1.25rem;
+   top: 1.66rem;
 }
 /* 头部 */
 
@@ -124,7 +124,7 @@ a:visited {
 
 
 
-.content{color:#333; width:100%;height:100%;overflow: hidden; position:absolute;top:0;padding-top:1.25rem; padding-bottom:1rem;min-width:3.2rem;margin:0 auto;background: #f7f7f7;}
+.content{color:#333; width:100%;height:100%;overflow: hidden; position:absolute;top:0;padding-top:1.66rem; padding-bottom:1rem;min-width:3.2rem;margin:0 auto;background: #f7f7f7;}
 .main1 {width: 100%;height: 100%;position:relative;overflow:auto;overflow-x:hidden;text-align:left;}
 
 
