@@ -47,6 +47,15 @@ angular.module('starter.controllers', [])
     //console.log('sdafsag');
     $ionicHistory.goBack();
   }
+
+
+  $scope.bookingDialog = function() {
+    $scope.data.popup = 'BookingDialog';
+    
+  }
+  $scope.orderDialog = function() {
+    $scope.data.popup = 'OrderDialog';
+  }
 })
 .controller('commonRegisterCtrl', function($scope, $timeout, $state, $ionicHistory, Main) {
 
@@ -153,7 +162,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('bookingMenuCtrl', function($scope, $stateParams, $ionicHistory) {
+.controller('bookingMenuCtrl', function($scope, $stateParams, $ionicHistory, $state) {
 
 })
 .controller('bookingDetailCtrl', function($scope, $stateParams, Main) {
@@ -162,10 +171,8 @@ angular.module('starter.controllers', [])
   $scope.booking = Main.consultant.getBooking(bid);
   //console.log($scope.booking);
 })
-.controller('orderMenuCtrl', function($scope, $stateParams, $ionicHistory) {
 
-})
-.controller('orderDetailCtrl', function($scope, $stateParams, Main) {
+.controller('orderDetailCtrl', function($scope, $stateParams, $ionicHistory, Main) {
   //console.log('124455');
   var oid = $stateParams.orderId;
   console.log(oid);
@@ -175,6 +182,9 @@ angular.module('starter.controllers', [])
   $scope.selectWin = function(item){
     console.log(item);
     $scope.data.win=item;
+  }
+  $scope.goBack = function() {
+    $ionicHistory.goBack();
   }
   //$scope.booking = Main.consultant.getBooking(bid);
   //console.log($scope.booking);
@@ -707,27 +717,9 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('CustomerMenuCtrl', function($scope, $state, MultipleViewsManager){
-  $scope.data = {
-    selectedItem : "index"
-  }
-  MultipleViewsManager.updatedLeft(function(params) {
-    //console.log(params);
-    $scope.data.selectedItem = params.msg;
-  });
-
-  $scope.selectItem = function(item) {
-      MultipleViewsManager.updateView('main-my-toolbox', {msg: item});
-      $scope.data.selectedItem = item;
-  }
-  $scope.showItem = function(item){
-    var arr = $scope.data.selectedItem.split("-");
-    return (arr[0] == item)
-  }
-})
 
 
-.controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
+.controller('mainCustomerCtrl', function($scope, $state, $ionicSideMenuDelegate, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
   //** common function
   var refreshData = function() {
     Main.customer.queryBookings({}, function(data){
@@ -738,7 +730,7 @@ angular.module('starter.controllers', [])
   //**
   //** controller data
   $scope.customer = {
-    win: 'bookings',
+    win: 'index',
     suffix: '',
     //orders: 'orders',
     bookings: {},
@@ -759,15 +751,12 @@ angular.module('starter.controllers', [])
   refreshData();
   //**
 
-  MultipleViewsManager.updated(function(params) {
-    var arr = params.msg.split("-");
-
-    $scope.customer.win = arr[0];
-    $scope.customer.suffix = '';
-    for(var i=1;i<arr.length;i++) {
-      $scope.customer.suffix = $scope.customer.suffix + '-' + arr[i];
-    }
-  });
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+  $scope.selectItem = function(item) {
+      $scope.customer.win = item;
+  }
 
   $scope.selectPage = function(item) {            
     MultipleViewsManager.updateViewLeft('main-my-toolbox', {msg: item});

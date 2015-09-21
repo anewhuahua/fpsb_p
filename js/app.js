@@ -176,11 +176,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
   .state('common.order_detail', {
     url: '/order/detail/:orderId',
     views: {
-      'order-menu': {
-         templateUrl: 'templates/common/order_menu.html',
-         controller: 'orderMenuCtrl'
-      },
-
       'order-detail': {
          templateUrl: 'templates/common/order_detail.html',
          controller: 'orderDetailCtrl'
