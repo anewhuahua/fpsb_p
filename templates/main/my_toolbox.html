@@ -3,7 +3,7 @@
 
 </ion-nav-bar>
 <div class="header">
-      <div class="hdlogo"><img src="teImg/telogo.jpg" /></div>
+      <div class="hdlogo"><img src="teImg/logotop.png" /></div>
       <div class="hdrpop" ng-click="toggleLeft()"></div>
 </div>
 
@@ -35,11 +35,17 @@
                 </div>
               </li>
               <li>
-                <div class="gfnulitp">
-                  <span>我的信息</span>
+                <div menu-close class="gfnulitp" ng-class="{'gjxtjcss':customer.win=='information'}" ng-click="selectItem('information')">
+                  <span>个人资料</span>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
                
+              </li>
+              <li>
+                <div menu-close class="gfnulitp" ng-class="{'gjxtjcss':customer.win=='message'}" ng-click="selectItem('message')">
+                  <span>消息中心</span>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
               </li>
                <li>
                 <div class="gfnulitp" ng-click="logout()">
@@ -106,17 +112,17 @@
                  </p>
              </div>
              
-             <div class="gnr2nrctop">
+             <div class="gnr2nrctop" ng-click="selectItem('information')">
                 <p> 
                    <em><img src="teImg/headr2.png" /></em>  
-                   <span>我的主账号</span> 
+                   <span>个人资料</span> 
                  </p>
              </div>
              
-             <div class="gnr2nrctop">
+             <div class="gnr2nrctop" ng-click="selectItem('message')">
                 <p> 
                    <em><img src="teImg/yjlcs.png" /></em>  
-                   <span>我的关注</span> 
+                   <span>消息中心</span> 
                  </p>
              </div>
             
@@ -289,135 +295,82 @@
     
 <!-- information -->
 <div class="main1" ng-switch-when='information'>
-  <div class="gnr2dadv"><!--内容右侧开始-->
+            <!-- 中间内容-s --> 
+            <ul class="zhyhktpul">
+              <li ng-class="{'zhyhkpulcss': customer.information.win=='bank'}" ng-click="selectInformation('bank')"><a href="">银行卡认证</a></li>
+              <li ng-class="{'zhyhkpulcss': customer.information.win=='profile'}" ng-click="selectInformation('profile')"><a href="">个人信息设置</a></li>
+              <li ng-class="{'zhyhkpulcss': customer.information.win=='password'}" ng-click="selectInformation('password')"><a href="">密码设置</a></li>
+            </ul>
+            
+            <div class="zhyhknr"><!--工具箱-银行卡认证内容部分-s-->
+               <form ng-if="customer.information.win=='bank'">
+                  <div class="zhyhknr1"><span>开户人姓名</span> <input type="text"  placeholder="请输入您的姓名"/></div>
+                  <div class="zhyhknr2"><span>选择银行</span> <a href="">请选择</a><input type="button" /></div>
+                  <div class="zhyhknr1"><span>银行卡号</span> <input type="text" placeholder="该银行卡为您提现、回款时的默认银行卡" /></div>
+                  <div class="zhyhknr1"><span>身份证号码</span> <input type="text" placeholder="请填写您的真实身份证号，验证后不得修改" /></div>
+                  <div class="zhyhknr1"><span>手 机 号</span> <input type="text" placeholder="请输入手机号" /></div>
+                  <div class="zhyhknr3"><span>验 证 码</span> <input type="text" placeholder="请填写您接收到的验证码"/> <a href="">43秒后重发</a></div>
+                  <input class="yhkqd" value="确定"  type="submit"/>
+               </form>
 
-      <div class="gjxnrtopyy"></div>
-                <!-- 内容top阴影 -->
-      <ul class="zhyhktpul">
-        <li ng-class="{zhyhkpulcss: customer.win + customer.suffix=='information'}" ng-click="selectPage('information')"><a href="">个人信息设置</a></li>
-        <li ng-class="{zhyhkpulcss: customer.win + customer.suffix=='information-bank'}" ng-click="selectPage('information-bank')"><a href="">银行卡认证</a></li>
-        <li ng-class="{zhyhkpulcss: customer.win + customer.suffix=='information-password'}" ng-click="selectPage('information-password')"><a href="">密码设置</a></li>
-      </ul>
-                
-      <div class="zhyhknr"><!--我的账户-银行卡认证内容部分-s-->
-        <form ng-if="customer.win + customer.suffix=='information'">           
-          <div class="zhkhimgdv">
-            <span>设置头像</span>
-            <p>
-              <img src={{customer.information.profile.touxiang}} ng-click="takePhoto('information')"/>
-              <a href="" ng-click="takePhoto('information')"></a>
-            </p>           
-          </div>
-          <div class="hkgrdv2">
-            <div class="zhgdvf"><span>真实姓名</span> <input type="text" placeholder="请输入您的真实姓名" /></div>
-            <div class="shkdsr">
-              <label>男 <input name="first" type="radio" value="" class="shkdsrnan" /></label>
-              <label>女 <input name="first" type="radio" value="" class="shkdsrnan" /></label>
-            </div>
-          </div>
-                          
-          <div class="zhyhknr3"><span>手 机 号</span> <input type="text" placeholder="请输入您要修改的手机号证码"/> <a href="">修改</a></div>
-          <div class="zhyhknr3"><span>邮箱地址</span> <input type="text" placeholder="请输入您要绑定的邮箱"/> <a href="">绑定</a></div>
-          <input class="yhkqd" value="确定"  type="submit"/>
-      </form>
-      <form ng-if="customer.win + customer.suffix=='information-bank'">
-        <div class="zhyhknr1"><span>开户人姓名</span> <input type="text"  placeholder="请输入您的姓名"/></div>
-        <div class="zhyhknr2"><span>选择银行</span> <a href="">请选择</a><input type="button" /></div>
-        <div class="zhyhknr1"><span>银行卡号</span> <input type="text" placeholder="该银行卡为您提现、回款时的默认银行卡" /></div>
-        <div class="zhyhknr1"><span>身份证号码</span> <input type="text" placeholder="请填写您的真实身份证号，验证后不得修改" /></div>
-        <div class="zhyhknr3"><span>验 证 码</span> <input type="text" placeholder="请填写您接收到的验证码"/> <a href="">43秒后重发</a></div>
-        <input class="yhkqd" value="确定"  type="submit"/>
-      </form>
-      <form ng-if="customer.win + customer.suffix=='information-password'">
-          <div class="zhyhknr1"><span>当前密码</span> <input type="text"  placeholder="请输入您的原始登录密码"/></div>
-          <div class="zhyhknr1"><span>新 密 码</span> <input type="text" placeholder="8-20位，必须含有字母" /></div>
-          <div class="zhyhknr1"><span>确认新密码</span> <input type="text" placeholder="请重复输入你的密码" /></div>
-          <div class="zhyhknr3"><span>验 证 码</span> <input type="text" placeholder="请填写您接收到的验证码"/> <a href="">43秒后重发</a></div>
-          <input class="yhkqd" value="确定"  type="submit"/>
-      </form>      
-                
-    </div><!--我的账户-银行卡认证内容部分-e-->
+               <form ng-if="customer.information.win=='profile'">
+                   
+                    <div class="zhkhimgdv">
+                       <span>设置头像</span>
+                       <p>
+                         <img src="teImg/ghnr1lef.png" />
+                         <a href=""></a>
+                       </p>
+                       
+                    </div>
+                    <div class="zhyhknr1"><span>真实姓名</span> <input type="text" placeholder="请重复输入您的姓名" /></div>
 
+                    <div class="shkdsr">
+                      <label>男 <input name="first" type="radio" value="" class="shkdsrnan" /></label>
+                      <label>女 <input name="first" type="radio" value="" class="shkdsrnan" /></label>
+                    </div>
 
+                      
+                    <div class="zhyhknr3"><span>手 机 号</span> <input type="text" placeholder="请输入您要修改的手机号证码"/> <a href="">修改</a></div>
+                    <div class="zhyhknr3"><span>邮箱地址</span> <input type="text" placeholder="请输入您要绑定的邮箱"/> <a href="">绑定</a></div>
+                  <input class="yhkqd" value="确定"  type="submit"/>
+               </form>
 
-                
+                <form ng-if="customer.information.win=='password'"> 
+                    <div class="zhyhknr1"><span>当前登录密码</span> <input type="text"  placeholder="请输入您的原始登录密码"/></div>
+                    <div class="zhyhknr1"><span>新 密 码</span> <input type="text" placeholder="8-20位，必须含有字母" /></div>
+                    <div class="zhyhknr1"><span>确认新密码</span> <input type="text" placeholder="请重复输入你的密码" /></div>
+                    <div class="zhyhknr1"><span>手 机 号</span> <input type="text" placeholder="请输入手机号" /></div>
+                    <div class="zhyhknr3"><span>验 证 码</span> <input type="text" placeholder="请填写您接收到的验证码"/> <a href="">43秒后重发</a></div>
+                    <input class="yhkqd" value="确定"  type="submit"/>
+                 </form>
+            
+            </div><!--工具箱-银行卡认证内容部分-e-->
 
-              
-  </div><!--内容右侧结束-->
 </div>
 <!-- information -->
 
-<!-- other -->
-<div class="main1" ng-switch-when='other'>
-            <div class="gnr2dadv">
-
-                <div class="gjxnrtopyy"></div> <!-- 内容top阴影 -->
-               
-
+<!-- message -->
+<div class="main1" ng-switch-when='message'>
+            <div class="tddztdv">
+         
+                <ul class="ddxqtopqhul"><!--top分类-s-->
+                   <li class="ddxqcss"><a href="">系统消息</a></li>
+                </ul><!--top分类-e-->
                 
-                <div class="lcsrzdv"><!--理财师认证--s-->
-                   <form>
-                       
-                        <div class="hkgrdv2">
-                          <div class="zhgdvf"><span>真实姓名</span> <input type="text"  /></div>
-                          <div class="shkdsr">
-                            <label>男 <input name="first" type="radio" value="" class="shkdsrnan" /></label>
-                            <label>女 <input name="first" type="radio" value="" class="shkdsrnan" /></label>
-                          </div>
-                        </div>
-                          
-                        <div class="zhyhknr1"><span>身 份 证 号</span> <input type="text" placeholder="" /></div>
-                        <div class="zhyhknr1"><span>所属机构</span> <input type="text" placeholder="" /></div>
-                        
-                        <div class="lcsrzqy">
-                           <div class="lcsrzq1">所在区域</div>
-                           <div class="lcsrzq2">
-                             <div class="lcsrrx"><img src="teImg/khlbxia.png" /></div>
-                             <select>
-                                <option value="volvo">请选择</option>
-                                <option value="saab">浙江省</option>
-                                <option value="opel">已完成</option>
-                                <option value="audi">未通过</option>
-                              </select>
-                           </div>
-                           <div class="lcsrzq2">
-                             <div class="lcsrrx"><img src="teImg/khlbxia.png" /></div>
-                             <select>
-                                <option value="volvo">请选择</option>
-                                <option value="saab">杭州市</option>
-                                <option value="opel">已完成</option>
-                                <option value="audi">未通过</option>
-                              </select>
-                           </div>
-                           <div class="lcsrzq2">
-                             <div class="lcsrrx"><img src="teImg/khlbxia.png" /></div>
-                             <select>
-                                <option value="volvo">请选择</option>
-                                <option value="saab">江干区</option>
-                                <option value="opel">已完成</option>
-                                <option value="audi">未通过</option>
-                              </select>
-                           </div>
-                           
-                        </div>
-                        
-                        
-                        <div class="ddztdv">
-                            <div class="ddztf">
-                               <div class="ddztfimg" ng-click="takePhoto('promotion')"><img src="teImg/ddztwj_03.png" /></div>
-                               <a class="ddztspan" ng-click="takePhoto('promotion')"><img src="{{customer.other.promotion.stuff}}"/></a>
-                            </div>
-                            <span class="ddztrrs">上传您的身份证和相关资格证书</span>
-                        </div> 
-                        
-                      <input class="yhkqd" value="确定"  type="submit"/>
-                   </form>
-                
-                </div><!--理财师认证-e-->
-                
-              </div><!--gnr2dadv-->
+                <span class="gxxxsp"> [预约成功]粤财·瀚信中鼎盈丰2期！</span>
+                <span class="gxxxsp"> [预约成功]粤财·瀚信中鼎盈丰2期！</span>
+                <span class="gxxxsp"> [预约成功]粤财·瀚信中鼎盈丰2期！</span>
+                <span class="gxxxsp"> [预约成功]粤财·瀚信中鼎盈丰2期！</span>
+                <span class="gxxxsp"> [预约成功]粤财·瀚信中鼎盈丰2期！</span>
+                <span class="gxxxsp"> [预约成功]粤财·瀚信中鼎盈丰2期！</span>
+                <span class="gxxxsp"> [预约成功]粤财·瀚信中鼎盈丰2期！</span>
+                <span class="gxxxsp"> [预约成功]粤财·瀚信中鼎盈丰2期！</span>
+              
+              
+            </div>
 </div>
-<!-- other -->
+<!-- message -->
 
   </ion-content>
 </ion-view>

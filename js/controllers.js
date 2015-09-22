@@ -47,23 +47,64 @@ angular.module('starter.controllers', [])
 })
 
 .controller('commonProductCtrl', function($scope,$ionicHistory, $stateParams, Main) {
-  pid = $stateParams.productID;
-  console.log(pid);
+  $scope.pid = $stateParams.productID;
+  //console.log(pid);
 
   $scope.goBack = function() {
     //console.log('sdafsag');
-    $ionicHistory.goBack();
+    $backView = $ionicHistory.backView();
+    $backView.go();
   }
 
+})
 
-  $scope.bookingDialog = function() {
-    $scope.data.popup = 'BookingDialog';
+.controller('commonProductOptionCtrl', function($scope,$rootScope,$ionicHistory, $stateParams, Main, Factory) {
+  pid = $stateParams.productID;
+  console.log(pid);
+
+  $scope.option = Factory.newOption(10000, 60000, 10000);
+
+  $scope.addBooking= function(quantity) {
+      // todo quantity
+      Main.customer.addBooking(pid, function(data){
+        $scope.data.warning.status = 'success';
+        $scope.data.warning.words = '您的预约已成功提交!' +
+                                     '您的理财师将马上与您联系，请保持电话通畅!';
+
+        $scope.$broadcast("AddBooking", data);
+      }, function(error){
+        $scope.data.warning.status = 'fail';
+        $scope.data.warning.words = error;
+
+      }, function(){
+      });
+
+  }
+
+  $scope.addOrder = function(quantity) {
+      // todo quantity
+      Main.customer.submitOrder(pid, function(data){
+        $scope.data.warning.status = 'success';
+        $scope.data.warning.words = '您的订单已成功提交!' +
+                                     '您的理财师将马上与您联系进行后续服务，请保持电话通畅!';
+        $scope.$broadcast("AddOrder", data);
+      }, function(error){
+        $scope.data.warning.status = 'fail';
+        $scope.data.warning.words = error;
+      }, function(){
+      });
     
   }
-  $scope.orderDialog = function() {
-    $scope.data.popup = 'OrderDialog';
+  //console.log($scope.option);
+
+  $scope.goBack = function() {
+    //console.log('sdafsag');
+    $backView = $ionicHistory.backView();
+    $backView.go();
   }
+
 })
+
 .controller('commonRegisterCtrl', function($scope, $timeout, $state, $ionicHistory, Main) {
 
 
@@ -311,10 +352,11 @@ angular.module('starter.controllers', [])
   
  
   $scope.logout = function() {
-    $state.go('main.index');
+    
     Main.logout(function(profile){ 
       $scope.data.person = profile;
       $window.location.reload();
+      $state.go('main.index');
     });
   }
 
@@ -349,64 +391,14 @@ angular.module('starter.controllers', [])
     }
   }
 
-  $scope.addBooking= function(quantity) {
-    // todo quantity
-    if($scope.data.looking_product) {
-      //console.log('booking add');
-      Main.customer.addBooking($scope.data.looking_product.id, function(data){
-        $scope.data.warning.status = 'success';
-        $scope.data.warning.words = '您的预约已成功提交!' +
-                                     '您的理财师将马上与您联系，请保持电话通畅!';
 
-        $scope.$broadcast("AddBooking", data);
 
-        //console.log("tyson");
-      }, function(error){
-        $scope.data.warning.status = 'fail';
-        $scope.data.warning.words = error;
-
-      }, function(){
-      });
-    } else {
-      console.log("no product id for booking");
-      $scope.data.warning.status = 'fail';
-      $scope.data.warning.words = '请去发现页预约产品';
-
-    }
-    $scope.data.looking_product=null;
-    $scope.data.popup = '';
-  }
-
-  $scope.addOrder = function() {
-    if($scope.data.looking_product) {
-      //console.log('booking add');
-      Main.customer.submitOrder($scope.data.looking_product.id, function(data){
-        $scope.data.warning.status = 'success';
-        $scope.data.warning.words = '您的订单已成功提交!' +
-                                     '您的理财师将马上与您联系进行后续服务，请保持电话通畅!';
-        $scope.$broadcast("AddOrder", data);
-        //console.log(data);
-        //console.log("tyson");
-      }, function(error){
-        $scope.data.warning.status = 'fail';
-        $scope.data.warning.words = error;
-      }, function(){
-
-      });
-    } else {
-      console.log("no product id for order");
-      $scope.data.warning.status = 'fail';
-      $scope.data.warning.words = '请去发现页购买产品';
-    }
-    $scope.data.looking_product=null;
-    $scope.data.popup = '';
-  }
-
-    $scope.logout = function() {
-    $state.go('main.index');
+  $scope.logout = function() {
+    
     Main.logout(function(profile){ 
       $scope.data.person = profile;
       $window.location.reload();
+      $state.go('main.index');
     });
   }
  
@@ -442,10 +434,11 @@ angular.module('starter.controllers', [])
         $scope.data.warning.status='success';
         $scope.data.warning.words = '登入成功';
         
+        
         $state.go('main.index');
-
         setTimeout(function(){
           $window.location.reload();
+          $state.go('main.index');
         }, 500);
       
 
@@ -503,9 +496,9 @@ angular.module('starter.controllers', [])
   };
 
   //Cleanup the popover when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.popover.remove();
-  });
+  //$scope.$on('$destroy', function() {
+  //  $scope.popover.remove();
+  //});
   // Execute action on hide popover
   $scope.$on('popover.hidden', function() {
     // Execute action
@@ -751,7 +744,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainCustomerCtrl', function($scope, $state, $ionicSideMenuDelegate, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
+.controller('mainCustomerCtrl', function($scope, $rootScope, $state, $ionicSideMenuDelegate, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
   //** common function
   var refreshData = function() {
     Main.customer.queryBookings({}, function(data){
@@ -765,9 +758,15 @@ angular.module('starter.controllers', [])
     win: 'index',
     suffix: '',
     //orders: 'orders',
-    bookings: {},
-    orders: {},
-    information: {},
+    bookings: {
+
+    },
+    orders: {
+      win: 'all'
+    },
+    information: {
+      win: 'profile'
+    },
     other: {}
   };
   //**
@@ -789,24 +788,17 @@ angular.module('starter.controllers', [])
   $scope.selectItem = function(item) {
       $scope.customer.win = item;
   }
-
-  $scope.selectPage = function(item) {            
-    MultipleViewsManager.updateViewLeft('main-my-toolbox', {msg: item});
-    
-    var arr = item.split("-");
-    $scope.customer.win = arr[0];
-    $scope.customer.suffix = '';
-    for(var i=1;i<arr.length;i++) {
-      $scope.customer.suffix = $scope.customer.suffix + '-' + arr[i];
-    }
-  }
   $scope.doRefresh = function() {
     refreshData();
     $scope.$broadcast('scroll.refreshComplete');
   }
+  $scope.selectInformation = function(item) {
+    $scope.customer.information.win = item
+  }
 
-  $scope.$on("AddBooking", function(event,msg) {
+  $rootScope.$on("AddBooking", function(event,msg) {
   // nothing to do now
+    console.log(msg);
   });
    $scope.$on("AddOrder", function(event,msg) {
   // nothing to do now
