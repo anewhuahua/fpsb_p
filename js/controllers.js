@@ -58,11 +58,16 @@ angular.module('starter.controllers', [])
 
 })
 
+
 .controller('commonProductOptionCtrl', function($scope,$rootScope,$ionicHistory, $stateParams, Main, Factory, Notify) {
+
   pid = $stateParams.productID;
   console.log(pid);
 
   $scope.option = Factory.newOption(10000, 60000, 10000);
+
+
+
 
   $scope.addBooking= function(quantity) {
       // todo quantity
@@ -71,11 +76,12 @@ angular.module('starter.controllers', [])
         $scope.data.warning.words = '您的预约已成功提交!' +
                                      '您的理财师将马上与您联系，请保持电话通畅!';
 
+
         //$scope.$broadcast("AddBooking", data);
       }, function(error){
         $scope.data.warning.status = 'fail';
         $scope.data.warning.words = error;
-
+        
       }, function(){
       });
     Notify.send('AddBooking', 'aaa');
@@ -375,23 +381,6 @@ angular.module('starter.controllers', [])
   $scope.closeWarning = function(win) {
     $scope.data.warning.status='';
     $scope.data.warning.words = '';
-  }
-  $scope.backProduct = function() {
-    if($scope.data.looking_product) {
-      $scope.data.popup = 'privateFund';
-    }
-  }
-  $scope.bookingDialog = function() {
-    if ($scope.data.looking_product) {
-      //$scope.data.looking_product = null;
-      $scope.data.popup = 'BookingDialog';
-    }
-  }
-  $scope.orderDialog = function() {
-    if ($scope.data.looking_product) {
-      //$scope.data.looking_product = null;
-      $scope.data.popup = 'OrderDialog';
-    }
   }
 
 
