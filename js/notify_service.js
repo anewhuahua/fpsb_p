@@ -3,8 +3,12 @@ angular.module('notify.service',[])
   return {
     send: function(msg, data) {
       //$state.go('main.my');
-      $rootScope.$broadcast(msg, data);
-      console.log(msg);
+      if(msg=='AddBooking') {
+      	$rootScope.$broadcast(msg, data);
+      	//$state.go('main.my');
+      	//$rootScope.
+      	//console.log(msg);
+      }
 
     }
   }

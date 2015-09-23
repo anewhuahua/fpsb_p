@@ -76,7 +76,7 @@ angular.module('starter.controllers', [])
         $scope.data.warning.words = '您的预约已成功提交!' +
                                      '您的理财师将马上与您联系，请保持电话通畅!';
 
-
+        Notify.send('AddBooking', 'aaa');
         //$scope.$broadcast("AddBooking", data);
       }, function(error){
         $scope.data.warning.status = 'fail';
@@ -84,7 +84,7 @@ angular.module('starter.controllers', [])
         
       }, function(){
       });
-    Notify.send('AddBooking', 'aaa');
+    
 
   }
 
@@ -326,30 +326,8 @@ angular.module('starter.controllers', [])
     },
     categories: [],
     toolbox:'index',
-    looking_product: '',
-    dialog: {
-      step: 10000,
-      minimal: 10000,
-      maximum: 1000000,
-      booking: {
-        quantity: 10000
-      },
-      order: {
-        quantity: 10000
-      },
-      increase: function() {
-        if($scope.data.dialog.booking.quantity + $scope.data.dialog.step <= $scope.data.dialog.maximum) {
-          $scope.data.dialog.booking.quantity += $scope.data.dialog.step;
-          $scope.data.dialog.order.quantity += $scope.data.dialog.step; 
-        }
-      },
-      decrease: function () {
-        if($scope.data.dialog.booking.quantity - $scope.data.dialog.step >= $scope.data.dialog.minimal) {
-          $scope.data.dialog.booking.quantity -= $scope.data.dialog.step;
-          $scope.data.dialog.order.quantity -= $scope.data.dialog.step;
-        }
-      }
-    }
+    looking_product: ''
+
   };
 
   Main.login({}, function(){ 
