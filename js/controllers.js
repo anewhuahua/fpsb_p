@@ -58,7 +58,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('commonProductOptionCtrl', function($scope,$rootScope,$ionicHistory, $stateParams, Main, Factory) {
+.controller('commonProductOptionCtrl', function($scope,$rootScope,$ionicHistory, $stateParams, Main, Factory, Notify) {
   pid = $stateParams.productID;
   console.log(pid);
 
@@ -71,13 +71,14 @@ angular.module('starter.controllers', [])
         $scope.data.warning.words = '您的预约已成功提交!' +
                                      '您的理财师将马上与您联系，请保持电话通畅!';
 
-        $scope.$broadcast("AddBooking", data);
+        //$scope.$broadcast("AddBooking", data);
       }, function(error){
         $scope.data.warning.status = 'fail';
         $scope.data.warning.words = error;
 
       }, function(){
       });
+    Notify.send('AddBooking', 'aaa');
 
   }
 
@@ -102,6 +103,8 @@ angular.module('starter.controllers', [])
     $backView = $ionicHistory.backView();
     $backView.go();
   }
+
+  $rootScope.tyson='tyson';
 
 })
 
@@ -795,12 +798,21 @@ angular.module('starter.controllers', [])
   $scope.selectInformation = function(item) {
     $scope.customer.information.win = item
   }
+  $scope.selectOrders = function(item) {
+    $scope.customer.orders.win = item
+  }
 
-  $rootScope.$on("AddBooking", function(event,msg) {
-  // nothing to do now
-    console.log(msg);
+  $rootScope.$on('AddBooking', function(event, args){
+        // args is the search results
+        // from the searchService
+      console.log(args);
+      console.log('tyson');
   });
-   $scope.$on("AddOrder", function(event,msg) {
+
+  console.log($rootScope.tyson);
+
+
+  $scope.$on("AddOrder", function(event,msg) {
   // nothing to do now
   });
 

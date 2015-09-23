@@ -10,7 +10,7 @@
 
 <ion-side-menus>
   <!-- Left menu -->
-  <ion-side-menu side="left">
+  <ion-side-menu side="left" width="180">
 
         <div class="content cls">
           <div class="main1">
@@ -133,23 +133,23 @@
             <div class="gjxqbdddv"> 
              
               <ul class="qbgnr2nrul">
-                  <li ><a href="" class="gjxqbcss">
+                  <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='all'}" ng-click="selectOrders('all')">
                      <div><img src="teImg/gnr2rabm11a.png" title="" alt="" /></div>
                      <em>全部订单</em>
                   </a></li>
-                  <li><a href="">
+                  <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='baobei'}" ng-click="selectOrders('baobei')">
                      <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
                      <em>待报备</em>
                   </a></li>
-                  <li><a href="">
+                  <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='shenhe'}" ng-click="selectOrders('shenhe')">
                      <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
                      <em>待审核</em>
                   </a></li>
-                  <li><a href="">
+                  <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='wancheng'}" ng-click="selectOrders('wancheng')">
                      <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
                      <em>已完成</em>
                   </a></li>
-                  <li><a href="">
+                   <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='history'}" ng-click="selectOrders('history')">
                      <div><img src="teImg/gnr2rabm4.png" title="" alt="" /></div>
                      <em>历史订单</em>
                   </a></li>
@@ -235,58 +235,20 @@
                 <span class="tgxnr1ms">首席金服高级理财师，十年从业经验，为客户创造超过1200万利润先后于中国人民银行总行、深圳证券交易所和深圳发展银行从事金融研究与实务工作，竭诚为您服务。</span>
               </div>
               
-              <span class="tgnr1ts">当前服务产品</span>
-              
-              <div class="gxqbddnr">
+              <span class="tgnr1ts">我的订单</span>
+
+
+                <div class="gxqbddnr" ng-repeat='booking in customer.bookings.data'>
                   <div class="gxqbddnrf">
                     <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
                     <em>已完成</em>
                   </div>
                   <div class="gxqbddnrr">
-                     <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                     <span>{{booking.product.issuer}}</span>
                      <span>当前持有资产(元) <em> 541321242100.20</em></span>
                   </div>
                 </div>
-                <div class="gxqbddnr">
-                  <div class="gxqbddnrf">
-                    <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
-                    <em>已完成</em>
-                  </div>
-                  <div class="gxqbddnrr">
-                     <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                     <span>当前持有资产(元) <em> 541321242100.20</em></span>
-                  </div>
-                </div>
-                <div class="gxqbddnr">
-                  <div class="gxqbddnrf">
-                    <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
-                    <em>已完成</em>
-                  </div>
-                  <div class="gxqbddnrr">
-                     <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                     <span>当前持有资产(元) <em> 541321242100.20</em></span>
-                  </div>
-                </div>
-                <div class="gxqbddnr">
-                  <div class="gxqbddnrf">
-                    <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
-                    <em>已完成</em>
-                  </div>
-                  <div class="gxqbddnrr">
-                     <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                     <span>当前持有资产(元) <em> 541321242100.20</em></span>
-                  </div>
-                </div>
-                <div class="gxqbddnr">
-                  <div class="gxqbddnrf">
-                    <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
-                    <em>已完成</em>
-                  </div>
-                  <div class="gxqbddnrr">
-                     <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                     <span>当前持有资产(元) <em> 541321242100.20</em></span>
-                  </div>
-                </div>
+               
             
             
             </div><!--理财师最外层-e-->
