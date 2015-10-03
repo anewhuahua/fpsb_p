@@ -3,23 +3,23 @@ angular.module('factory.service',[])
   　var Option = {
 　　　　create: function(mi, ma, st){
 　　　　　　var option = {
-        quantity: mi,
-        min: mi,
-        max: ma,
-        step: st
-      };
-　　　　　　option.increase = function(){
-        this.quantity = this.quantity + this.step;
-        if (this.quantity >= this.max) {
-          this.quantity = this.max;
-        }
-      };
-      option.decrease = function(){
-        this.quantity = this.quantity - this.step;
-        if (this.quantity <= this.min) {
-          this.quantity = this.min;
-        }
-      };
+            quantity: mi,
+            min: mi,
+            max: ma,
+            step: st
+          };
+    　　　 option.increase = function(){
+            this.quantity = this.quantity + this.step;
+            if (this.quantity >= this.max) {
+              this.quantity = this.max;
+            }
+          };
+          option.decrease = function(){
+            this.quantity = this.quantity - this.step;
+            if (this.quantity <= this.min) {
+              this.quantity = this.min;
+            }
+          };
 　　　　　　return option;
 　　　　}
 　　};

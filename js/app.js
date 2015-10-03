@@ -120,10 +120,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews', 'starter.
   .state('main.toolbox', {
     url: '/toolbox',
     views: {
-      'main-consultant-menu': {
-         templateUrl: 'templates/main/consultant_menu.html',
-         controller: 'ConsultantMenuCtrl'
-      },
+
 
       'main-consultant-toolbox': {
          templateUrl: 'templates/main/consultant_toolbox.html',

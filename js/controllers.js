@@ -572,8 +572,9 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('mainConsultantCtrl', function($scope, $state, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
+.controller('mainConsultantCtrl', function($scope, $state, $timeout, $cordovaCamera, $ionicSideMenuDelegate, MultipleViewsManager, Main) {
   
+
 //** common function
   var refreshData = function() {
     Main.consultant.queryBookings({}, function(data){
@@ -597,6 +598,8 @@ angular.module('starter.controllers', [])
   $scope.consultant.information.profile = {
     touxiang: "teImg/ghnr1lef.png" 
   };
+  $scope.consultant.pendings.win = 'bookings'
+  $scope.consultant.information.win = 'profile'
   refreshData();
 
 //**
@@ -606,9 +609,19 @@ angular.module('starter.controllers', [])
     $scope.$broadcast('scroll.refreshComplete');
   };
 //**
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
 
-
-
+  $scope.selectItem = function(item) {
+      $scope.consultant.win = item;
+  }
+  $scope.selectPendings = function(item) {
+    $scope.consultant.pendings.win = item;
+  }
+  $scope.selectInformation = function(item) {
+    $scope.consultant.information.win = item;
+  }
 
 
   MultipleViewsManager.updated(function(params) {
