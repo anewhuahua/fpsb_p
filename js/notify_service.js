@@ -12,17 +12,24 @@ angular.module('notify.service',['main.service'])
     },
 
     notify: function(msg) {
+      var role = Main.getRole();
       if (msg == 'booking') {
-        if (Main.getRole() == 'Customer') {
+        if (role == 'Customer') {
           $state.go('main.my');
           $timeout(function() { 
             $rootScope.$broadcast('ChangeWindow', {win:'bookings'});
           }, 500); 
-        } else if (Main.getRole() == 'Consultant') {
-          
+        } else if (role == 'Consultant') {
+
         }
       }
       else {
+        if (role == 'Customer') {
+          $state.go('main.my');
+          $timeout(function() { 
+            $rootScope.$broadcast('ChangeWindow', {win:'orders'});
+          }, 500); 
+        }
 
       }
       

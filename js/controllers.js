@@ -42,7 +42,12 @@ angular.module('starter.controllers', [])
     //$scope.data.warning.words = '';
     if ($scope.data.warning.words.indexOf('您的预约已成功提交')>=0) {
       Notify.notify('booking');
+    } else if ($scope.data.warning.words.indexOf('您的订单已成功提交')>=0) {
+      Notify.notify('order');
+    } else {
+
     }
+    
   };
   $scope.closePopup = function() {
     $scope.data.popup = '';
@@ -57,11 +62,35 @@ angular.module('starter.controllers', [])
 
   $scope.goBack = function() {
     //console.log('sdafsag');
+    //console.log($backView);
     $backView = $ionicHistory.backView();
+    console.log($backView);
     $backView.go();
   }
 
+
 })
+
+.controller('commonProduct1Ctrl', function($scope,$ionicHistory, $stateParams, $state, Main) {
+  $scope.pid = $stateParams.productID;
+  console.log('tysontysontysontyson');
+  //console.log('dsafsa');
+  // console.log($stateParams.fromParams);
+
+  $scope.goBack = function() {
+    //console.log('sdafsag');
+    //console.log($backView);
+    $backView = $ionicHistory.backView();
+    console.log($backView);
+    $backView.go();
+    
+  }
+
+
+})
+
+
+
 
 
 .controller('commonProductOptionCtrl', function($scope,$rootScope,$ionicHistory, $stateParams, Main, Factory, Notify) {
@@ -99,7 +128,7 @@ angular.module('starter.controllers', [])
         $scope.data.warning.status = 'success';
         $scope.data.warning.words = '您的订单已成功提交!' +
                                      '您的理财师将马上与您联系进行后续服务，请保持电话通畅!';
-        $scope.$broadcast("AddOrder", data);
+        //$scope.$broadcast("AddOrder", data);
       }, function(error){
         $scope.data.warning.status = 'fail';
         $scope.data.warning.words = error;
@@ -510,8 +539,12 @@ angular.module('starter.controllers', [])
   });
 
   $scope.goProduct = function(pid){
-    console.log(pid+'tyson');
-    $state.go('common.product', {productID: pid);
+    //console.log(pid+'tyson');
+    $state.go('common.product', {productID: pid});
+  }
+  $scope.goProducts = function(cid){
+    //console.log(pid+'tyson');
+    $state.go('main.products', {categoryID: cid});
   }
 
   $scope.loadMore = function(){
@@ -800,6 +833,11 @@ angular.module('starter.controllers', [])
       $scope.customer.win = args.win;
       //console.log('tyson');
   });
+
+  $scope.goProduct1 = function(pid){
+    //console.log(pid+'tyson');
+    $state.go('common.product1', {productID: pid});
+  }
 
   //console.log($rootScope.tyson);
 

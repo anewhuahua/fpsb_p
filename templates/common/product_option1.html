@@ -1,0 +1,65 @@
+<!--
+<ion-nav-bar class="bar-dark">
+  <ion-nav-buttons side="left">
+   <button ng-click="toggleLeft()" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+      <ion-nav-title>
+      发现
+    </ion-nav-title>
+</ion-nav-bar>-->
+<ion-nav-bar>
+
+</ion-nav-bar>
+<div class="header">
+      <div class="hdlogo"><img src="teImg/logotop.png" /></div>
+      <div class="hdrback" ng-click="goBack()"></div>
+</div>
+
+<ion-view view-title="首席金服">
+  <ion-content class="content cls">
+    <div class="main1">
+          <div class="yyxqtopdv">
+            
+            <span class="xpqqyyt2">[信托]粤财·瀚海中鼎银丰</span>
+            <div class="xpqqt3">
+               <p>
+                 <span>预期年化 </span>
+                 <em> 10.50%</em>
+               </p>
+               <p>
+                 <span>理财期限 </span>
+                 <em>  18个月</em>
+               </p>
+            </div>
+
+         </div>
+         
+         
+         <div class="cpxqyynrdv">
+
+             <span class="cpxqyynrsp1">预约金额</span>
+            <form>
+             <div class="ccyyjjdv">
+               
+                  <input type="button" class="xpwwyyf" ng-click="option.decrease()"/>
+                  <input type="text" class="xpwwyym" ng-model="option.quantity"/>
+                  <input type="button" class="xpwwyyr" ng-click="option.increase()"/>
+               
+             </div>
+             <p class="xxccms"><span>最低10000起</span> <span>每10000累加</span> <span>最高可以预约60000</span></p>
+             <input type="submit"  class="ccxxdvtj" value="提交预约" ng-click="addOrder(option.quantity)"/>
+             <p class="zcmmjs">
+                <span><img src="teImg/zcmmjslog2.jpg" /></span>
+                <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
+             </p>
+          </div>
+          
+          
+        </form>  
+
+      </div>
+         
+
+    </div>
+  </ion-content>
+</ion-view>

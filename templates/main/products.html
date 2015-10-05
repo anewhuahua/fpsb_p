@@ -15,20 +15,30 @@
       <div class="hdrpop" ng-click="toggleLeft()"></div>
 </div>
 
+
+
 <ion-side-menus>
   <!-- Left menu -->
   <ion-side-menu side="left" width="180">
-    <div class="list has-header">
+    <div class="content cls">
+      <div class="main1">
 
         <!--
            <a class="item item-avatar"  href="#/main/products/categories/1" ng-class="{'item-energized' : selectedCategory==1}" ng-click="selectedCategory = 1">-->
 
-    
-
+            <ul class="gfnleful">
+              <li ng-repeat="category in data.categories">
+                <div menu-close class="gfnulitp" ng-class="{'gjxtjcss':selectedCategory == {{category.id}}}" ng-click="goProducts(category.id)">
+                  <span>{{category.name}}</span>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+              </li>
+            </ul>
+<!--
             <a menu-close class="item item-avatar"  href="#/main/products/categories/{{category.id}}" ng-class="{'item-energized' : selectedCategory=={{category.id}}}" ng-repeat="category in data.categories">
               <img src="{{category.image}}"/>
               {{category.name}}
-            </a>
+            </a>-->
             <!--
             <a class="item item-avatar" href="#/main/products/categories/2" ng-class="{'item-energized' : selectedCategory==2}"> 
               <img src="img/lbanr1img1.png"/>
@@ -46,6 +56,7 @@
               <img src="img/lbanr1img5.png"/>
               服务产品
             </a>-->
+          </div>
       </div>
   </ion-side-menu>
 

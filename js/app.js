@@ -150,10 +150,19 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews', 'starter.
   })
 
   .state('common.option', {
-    url: '/product/option/:productID',
+    url: '/product/option/booking/:productID',
     views: {
       'product-option': {
          templateUrl: 'templates/common/product_option.html',
+         controller: 'commonProductOptionCtrl'
+      }
+    }
+  })
+  .state('common.option1', {
+    url: '/product/option/order/:productID',
+    views: {
+      'product-option1': {
+         templateUrl: 'templates/common/product_option1.html',
          controller: 'commonProductOptionCtrl'
       }
     }
@@ -170,11 +179,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews', 'starter.
   })
 
   .state('common.product1', {
-    url: '/product/detail/:productID',
+    url: '/product1/detail/:productID',
     views: {
-      'common-product': {
-         templateUrl: 'templates/common/product.html',
-         controller: 'commonProductCtrl'
+      'common-product1': {
+         templateUrl: 'templates/common/product1.html',
+         controller: 'commonProduct1Ctrl'
       }
     }
   })

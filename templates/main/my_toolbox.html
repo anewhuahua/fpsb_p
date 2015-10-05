@@ -238,14 +238,14 @@
               <span class="tgnr1ts">我的预约</span>
 
 
-                <div class="gxqbddnr" ng-repeat='booking in customer.bookings.data'>
+                <div class="gxqbddnr" ng-repeat='booking in customer.bookings.data' ng-click="goProduct1(booking.product.id)">
                   <div class="gxqbddnrf">
                     <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
                     <em>已完成</em>
                   </div>
                   <div class="gxqbddnrr">
                      <span>{{booking.product.issuer}}</span>
-                     <span>当前持有资产(元) <em> 541321242100.20</em></span>
+                     <span>预约金额(元) <em> 541321242100.20</em></span>
                   </div>
                 </div>
                
