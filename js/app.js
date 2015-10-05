@@ -169,6 +169,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews', 'starter.
     }
   })
 
+  .state('common.product1', {
+    url: '/product/detail/:productID',
+    views: {
+      'common-product': {
+         templateUrl: 'templates/common/product.html',
+         controller: 'commonProductCtrl'
+      }
+    }
+  })
+
   .state('common.booking_detail', {
     url: '/booking/detail/:bookingId',
     views: {

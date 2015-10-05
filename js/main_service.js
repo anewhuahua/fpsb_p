@@ -49,6 +49,10 @@ angular.module('main.service',[])
   };
 
   return {
+    getRole: function() {
+      return role;
+    },
+
     login: function(param, successHandler, errorHandler, finallyHandler) {
       var username = null;
       var password = null;

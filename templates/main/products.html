@@ -94,8 +94,8 @@
             <li class="fxbxlbulib" ng-click="popFilter($event)"><span>筛选</span><em></em></li> 
           </ul> 
 
-          <div class="xtuolbdv" ng-repeat="product in data.products">  
-              <a href="#/common/product/detail/{{product.id}}">
+          <div class="xtuolbdv" ng-repeat="product in data.products" ng-click="goProduct(product.id)">  
+              <!--<a href="#/common/product/detail/{{product.id}}">-->
               <div class="xxlsrrp">
                  <span class="xxlsyyss1">推荐</span>
                  <span class="xxlsyyss2">热销</span>
@@ -111,7 +111,7 @@
                       <span>剩余时间 <em> 21 </em>天</span>
                     </div>
                 </div>  
-              </a>
+              <!--</a>-->
            </div> 
 
    

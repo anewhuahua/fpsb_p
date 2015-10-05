@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('commonCtrl', function($scope, $stateParams, $ionicHistory) {
+.controller('commonCtrl', function($scope, $stateParams, $ionicHistory, Notify) {
   $scope.data = {
      warning: {
       status: '',
@@ -39,16 +39,21 @@ angular.module('starter.controllers', [])
   };
   $scope.closeWarning = function(win) {
     $scope.data.warning.status='';
-    $scope.data.warning.words = '';
+    //$scope.data.warning.words = '';
+    if ($scope.data.warning.words.indexOf('您的预约已成功提交')>=0) {
+      Notify.notify('booking');
+    }
   };
   $scope.closePopup = function() {
     $scope.data.popup = '';
   }
 })
 
-.controller('commonProductCtrl', function($scope,$ionicHistory, $stateParams, Main) {
+.controller('commonProductCtrl', function($scope,$ionicHistory, $stateParams, $state, Main) {
   $scope.pid = $stateParams.productID;
   //console.log(pid);
+  //console.log('dsafsa');
+  // console.log($stateParams.fromParams);
 
   $scope.goBack = function() {
     //console.log('sdafsag');
@@ -76,7 +81,7 @@ angular.module('starter.controllers', [])
         $scope.data.warning.words = '您的预约已成功提交!' +
                                      '您的理财师将马上与您联系，请保持电话通畅!';
 
-        Notify.send('AddBooking', 'aaa');
+        //Notify.notify('booking');
         //$scope.$broadcast("AddBooking", data);
       }, function(error){
         $scope.data.warning.status = 'fail';
@@ -84,7 +89,7 @@ angular.module('starter.controllers', [])
         
       }, function(){
       });
-    
+      //Notify.notify('booking');
 
   }
 
@@ -110,7 +115,7 @@ angular.module('starter.controllers', [])
     $backView.go();
   }
 
-  $rootScope.tyson='tyson';
+ // $rootScope.tyson='tyson';
 
 })
 
@@ -465,6 +470,7 @@ angular.module('starter.controllers', [])
     $scope.popoverSort.hide();
   };
 
+
   //Cleanup the popover when we're done with it!
   //$scope.$on('$destroy', function() {
   //  $scope.popover.remove();
@@ -502,6 +508,11 @@ angular.module('starter.controllers', [])
   }, function(){
 
   });
+
+  $scope.goProduct = function(pid){
+    console.log(pid+'tyson');
+    $state.go('common.product', {productID: pid);
+  }
 
   $scope.loadMore = function(){
     setTimeout(function(){
@@ -782,14 +793,15 @@ angular.module('starter.controllers', [])
     $scope.customer.orders.win = item
   }
 
-  $rootScope.$on('AddBooking', function(event, args){
+  $rootScope.$on('ChangeWindow', function(event, args){
         // args is the search results
         // from the searchService
-      console.log(args);
-      console.log('tyson');
+      //console.log(args);
+      $scope.customer.win = args.win;
+      //console.log('tyson');
   });
 
-  console.log($rootScope.tyson);
+  //console.log($rootScope.tyson);
 
 
   $scope.$on("AddOrder", function(event,msg) {

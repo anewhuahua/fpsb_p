@@ -1,5 +1,5 @@
 angular.module('factory.service',[])
-.factory('Factory',  function() {
+.factory('Factory',  function($state) {
   　var Option = {
 　　　　create: function(mi, ma, st){
 　　　　　　var option = {
@@ -23,7 +23,7 @@ angular.module('factory.service',[])
 　　　　　　return option;
 　　　　}
 　　};
-  
+
 
   return {
     newOption: function(min, max, step) {
