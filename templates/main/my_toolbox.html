@@ -137,35 +137,75 @@
                      <div><img src="teImg/gnr2rabm11a.png" title="" alt="" /></div>
                      <em>全部订单</em>
                   </a></li>
-                  <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='baobei'}" ng-click="selectOrders('baobei')">
+                  <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='initiated'}" ng-click="selectOrders('initiated')">
                      <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
-                     <em>待报备</em>
+                     <em>未付款</em>
                   </a></li>
-                  <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='shenhe'}" ng-click="selectOrders('shenhe')">
+                  <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='paid'}" ng-click="selectOrders('paid')">
                      <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
+                     <em>已付款</em>
+                  </a></li>
+                  <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='running'}" ng-click="selectOrders('running')">
+                     <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
                      <em>待审核</em>
                   </a></li>
-                  <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='wancheng'}" ng-click="selectOrders('wancheng')">
-                     <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
-                     <em>已完成</em>
-                  </a></li>
-                   <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='history'}" ng-click="selectOrders('history')">
+                   <li ><a href="" ng-class="{'gjxqbcss': customer.orders.win=='completed'}" ng-click="selectOrders('completed')">
                      <div><img src="teImg/gnr2rabm4.png" title="" alt="" /></div>
-                     <em>历史订单</em>
+                     <em>完成投资</em>
                   </a></li>
                </ul> 
                
-               <a class="gxqbddnr" href="#common/order/detail/123" ng-repeat='order in customer.orders.data'>
+               <a ng-if="customer.orders.win=='all'" class="gxqbddnr" href="#common/order/detail/123" ng-repeat='order in customer.orders.data.all'>
                   <div class="gxqbddnrf">
-                    <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
-                    <em>已完成</em>
+                    <div><img src="{{customer.orders.img[order.state]}}" title="" alt="" /></div>
+                    <em>{{customer.orders.title[order.state]}}</em>
                   </div>
                   <div class="gxqbddnrr">
                      <span>{{order.product.issuer}}</span>
                      <span>当前持有资产(元) <em> 541321242100.20</em></span>
                   </div>
                 </a>
-                
+
+                 <a ng-if="customer.orders.win=='initiated'" class="gxqbddnr" href="#common/order/detail/123" ng-repeat='order in customer.orders.data.initiated'>
+                  <div class="gxqbddnrf">
+                    <div><img src="{{customer.orders.img[order.state]}}" title="" alt="" /></div>
+                    <em>{{customer.orders.title[order.state]}}</em>
+                  </div>
+                  <div class="gxqbddnrr">
+                     <span>{{order.product.issuer}}</span>
+                     <span>当前持有资产(元) <em> 541321242100.20</em></span>
+                  </div>
+                </a>
+                <a ng-if="customer.orders.win=='paid'" class="gxqbddnr" href="#common/order/detail/123" ng-repeat='order in customer.orders.data.paid'>
+                  <div class="gxqbddnrf">
+                    <div><img src="{{customer.orders.img[order.state]}}" title="" alt="" /></div>
+                    <em>{{customer.orders.title[order.state]}}</em>
+                  </div>
+                  <div class="gxqbddnrr">
+                     <span>{{order.product.issuer}}</span>
+                     <span>当前持有资产(元) <em> 541321242100.20</em></span>
+                  </div>
+                </a>
+                <a ng-if="customer.orders.win=='running'" class="gxqbddnr" href="#common/order/detail/123" ng-repeat='order in customer.orders.data.running'>
+                  <div class="gxqbddnrf">
+                    <div><img src="{{customer.orders.img[order.state]}}" title="" alt="" /></div>
+                    <em>{{customer.orders.title[order.state]}}</em>
+                  </div>
+                  <div class="gxqbddnrr">
+                     <span>{{order.product.issuer}}</span>
+                     <span>当前持有资产(元) <em> 541321242100.20</em></span>
+                  </div>
+                </a>
+                <a ng-if="customer.orders.win=='completed'" class="gxqbddnr" href="#common/order/detail/123" ng-repeat='order in customer.orders.data.completed'>
+                  <div class="gxqbddnrf">
+                    <div><img src="{{customer.orders.img[order.state]}}" title="" alt="" /></div>
+                    <em>{{customer.orders.title[order.state]}}</em>
+                  </div>
+                  <div class="gxqbddnrr">
+                     <span>{{order.product.issuer}}</span>
+                     <span>当前持有资产(元) <em> 541321242100.20</em></span>
+                  </div>
+                </a>
                 <!--
                 <a class="gxqbddnr" href="#common/order/detail/123">
                   <div class="gxqbddnrf">

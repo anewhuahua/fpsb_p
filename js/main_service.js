@@ -11,7 +11,13 @@ angular.module('main.service',[])
 
   var customer = {
     bookings: [],
-    orders: []
+    orders: {
+      all: [],
+      initiated: [],
+      paid: [],
+      running: [],
+      completed: []
+    }
   };
   var consultant = {
     bookings: [],
@@ -226,11 +232,12 @@ angular.module('main.service',[])
         }, 
         finallyHandler());
       },
-      submitOrder: function(pid, successHandler, errorHandler, finallyHandler) {
+      submitOrder: function(pid, money, successHandler, errorHandler, finallyHandler) {
         if(id) {
-          Rest.customer.v1.submitOrder(id, pid, function(data){
+          Rest.customer.v1.submitOrder(id, pid, money, function(data){
             if (parseRestSuccess('submitOrder', data, successHandler, errorHandler)) { 
-              customer.orders.unshift(data.result);
+              customer.orders.all.unshift(data.result);
+              customer.orders.initiated.unshift(data.result);
             }
           }, function(status){
             parseRestError('submitOrder', status, errorHandler);
@@ -247,11 +254,14 @@ angular.module('main.service',[])
       },
       queryOrders: function(param, successHandler, errorHandler, finallyHandler) {
         Rest.customer.v1.queryOrders(param, id, function(data){
+          var state  = param.state || 'all';
           if(parseRestSuccess('queryOrders', data, successHandler, errorHandler)) {
+            /*
             customer.orders.length = 0;
             for (var i=0;i<data.result.length;i++) {
               customer.orders.unshift(data.result[i]);
-            }
+            }*/
+            customer.orders[state] = data.result;
           }
         }, function(status){
           parseRestError('queryOrders',  status, errorHandler);

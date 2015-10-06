@@ -124,7 +124,7 @@ angular.module('starter.controllers', [])
 
   $scope.addOrder = function(quantity) {
       // todo quantity
-      Main.customer.submitOrder(pid, function(data){
+      Main.customer.submitOrder(pid, quantity, function(data){
         $scope.data.warning.status = 'success';
         $scope.data.warning.words = '您的订单已成功提交!' +
                                      '您的理财师将马上与您联系进行后续服务，请保持电话通畅!';
@@ -776,9 +776,19 @@ angular.module('starter.controllers', [])
   var refreshData = function() {
     Main.customer.queryBookings({}, function(data){
     }, function(status){}, function(){});
+
     Main.customer.queryOrders({}, function(data){
     }, function(status){}, function(){});
+    Main.customer.queryOrders({state:'initiated'}, function(data){
+    }, function(status){}, function(){});
+    Main.customer.queryOrders({state:'paid'}, function(data){
+    }, function(status){}, function(){});
+    Main.customer.queryOrders({state:'running'}, function(data){
+    }, function(status){}, function(){});
+    Main.customer.queryOrders({state:'completed'}, function(data){
+    }, function(status){}, function(){});
   }
+  
   //**
   //** controller data
   $scope.customer = {
@@ -800,6 +810,21 @@ angular.module('starter.controllers', [])
   //** initialize
   $scope.customer.bookings.data = Main.customer.getBookings();
   $scope.customer.orders.data = Main.customer.getOrders();
+  $scope.customer.orders.img = {
+    //all: 'teImg/gnr2rabm11a.png',
+    initiated: 'teImg/gnr2rabm1.png',
+    paid: 'teImg/gnr2rabm2.png',
+    running: 'teImg/gnr2rabm3.png',
+    completed: 'teImg/gnr2rabm4.png',
+  };
+  $scope.customer.orders.title = {
+    //all: 'teImg/gnr2rabm11a.png',
+    initiated: '未付款',
+    paid: '已付款',
+    running: '待审核',
+    completed: '完成投资',
+  };
+
   $scope.customer.information.profile = {
     touxiang: "teImg/ghnr1lef.png" 
   };
