@@ -20,7 +20,9 @@ angular.module('main.service',[])
     }
   };
   var consultant = {
-    bookings: [],
+    bookings: {
+      all: []
+    },
     orders: []
   };
 
@@ -271,14 +273,17 @@ angular.module('main.service',[])
 
 
     }, // customer
+
+////////////////////////////////////////////////
+
     consultant: {
       getBookings: function() {
         return consultant.bookings;
       },
       getBooking: function(bid) {
-        for (var i=0; i<consultant.bookings.length; i++) {
-          if(consultant.bookings[i].id == bid) {
-            return consultant.bookings[i];
+        for (var i=0; i<consultant.bookings.all.length; i++) {
+          if(consultant.bookings.all[i].id == bid) {
+            return consultant.bookings.all[i];
           }
         }
       },
@@ -286,10 +291,9 @@ angular.module('main.service',[])
         param.state = 'assigned';
         Rest.consultant.v1.queryBookings(param, id, function(data){
           if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
-            consultant.bookings.length = 0;
-            for (var i=0;i<data.result.length;i++) {
-              consultant.bookings.unshift(data.result[i]);
-            }
+            
+            consultant.bookings['all'] = data.result;
+            
           }
         }, function(status){
           parseRestError('queryBookings',  status, errorHandler);
@@ -298,7 +302,9 @@ angular.module('main.service',[])
       }
     }, // consultant
 
-    
+
+
+
     
     getCategories: function(){
       return categories;

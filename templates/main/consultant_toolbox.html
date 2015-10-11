@@ -46,6 +46,12 @@
                 </div>
               </li>
               <li>
+                <div menu-close class="gfnulitp" ng-class="{'gjxtjcss':consultant.win=='bookings'}" ng-click="selectItem('bookings')">
+                  <span>历史预约</span>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+              </li>
+              <li>
                 <div menu-close class="gfnulitp" ng-class="{'gjxtjcss':consultant.win=='planning'}" ng-click="selectItem('planning')">
                   <span>工作规划</span>
                   <em><img src="teImg/glefultprg.png" /></em>
@@ -139,6 +145,12 @@
                    <span>订单跟踪</span> 
                  </p>
              </div>
+             <div class="gnr2nrctop" ng-click="selectItem('bookings')">
+                <p> 
+                   <em><img src="teImg/yjlcs.png" /></em>  
+                   <span>历史预约</span> 
+                 </p>
+             </div>
              <div class="gnr2nrctop" ng-click="selectItem('planning')">
                 <p> 
                    <em><img src="teImg/yjlcs.png" /></em>  
@@ -173,13 +185,10 @@
                      <li ng-class="{'ddxqcss': consultant.pendings.win=='orders'}" ng-click="selectPendings('orders')"><a href="">新订单</a></li>
                   </ul><!--top分类-e-->
 
-                   
-                 
-                      
-                      
+
                       <div class="wdyydv" ng-if="consultant.pendings.win=='bookings'"><!-- 我的预约-s -->
-                                
-                        <div class="wdyydvtop"><span>2015 / 08 / 28</span> <em>[未服务]</em> </div>
+                        <div ng-repeat="booking in consultant.bookings.data.all" ng-click="goBooking(booking.id)">
+                        
                              <div class="sdyybmdv">
                                  <div class="wdyyf"><img src="teImg/ghnr1lef.png" /></div>
                                  <div class="sdyyr">
@@ -190,13 +199,15 @@
                                       </p>
                                       
                                       <div class="wdyynr2v">
-                                         <span>[保险]阳光分红型人寿 </span>
+                                         <span>{{booking.product.issuer}} </span>
                                          <em>返佣比2%</em>
                                          <a href=""><span>查看详情</span> <em></em></a>
                                       </div>
                                  </div>
-                          </div>
+                            </div>
+                            <div class="wdyydvtop"><span>2015 / 08 / 28</span> <em>[未服务]</em> </div>
 
+                          </div>
           
                       </div><!-- 我的预约-e -->
 
@@ -211,13 +222,7 @@
                         </div>
                       </div>
 
-
-
-
-
-          </div>
-
-    
+          </div>  
   </div>
 <!--待办事项完成-->
     
@@ -423,6 +428,51 @@
  </div>
 
 </div>
+
+
+<!-- bookings -->
+<div class="main1" ng-switch-when='bookings'>
+  <div class="gjxnrtpyyre">  
+    <div class="khlbtop"><!--内容top开始-->  
+      <a  href="" class="khlbtopf"> <span>全 部</span> <em></em></a>
+      <div class="khlbpr">
+        <form>
+         <input type="text"  class="khlbprput" placeholder="请输入客户的姓名"/>
+         <input type="submit" class="khlbprtj" value="" />
+       </form>
+     </div> 
+   </div><!--内容top结束-->
+  </div> 
+
+
+  <div class="gxqbddnrtt"><!-- 我的预约-s -->
+    <div ng-repeat="booking in consultant.bookings.data.all" ng-click="goBooking(booking.id)">
+
+     <div class="sdyybmdv">
+       <div class="wdyyf"><img src="teImg/ghnr1lef.png" /></div>
+       <div class="sdyyr">
+        <p class="wdyyrp1">
+         <span>王海先生 </span>
+         <em>白金用户</em>
+         <b>电话：1300004500 </b>
+       </p>
+
+       <div class="wdyynr2v">
+         <span>{{booking.product.issuer}} </span>
+         <em>返佣比2%</em>
+         <a href=""><span>查看详情</span> <em></em></a>
+       </div>
+     </div>
+   </div>
+   <div class="wdyydvtop"><span>2015 / 08 / 28</span> <em>[未服务]</em> </div>
+
+ </div>
+
+</div><!-- 我的预约-e -->
+
+
+</div>
+<!-- bookings -->
 
 
 <!-- orders -->

@@ -188,20 +188,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews', 'starter.
     }
   })
 
-  .state('common.booking_detail', {
-    url: '/booking/detail/:bookingId',
-    views: {
-      'booking-menu': {
-         templateUrl: 'templates/common/booking_menu.html',
-         controller: 'bookingMenuCtrl'
-      },
 
-      'booking-detail': {
-         templateUrl: 'templates/common/booking_detail.html',
-         controller: 'bookingDetailCtrl'
-      }
-    }
-  })
   .state('common.order_detail', {
     url: '/order/detail/:orderId',
     views: {
@@ -211,6 +198,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews', 'starter.
       }
     }
   })
+  .state('common.booking_detail', {
+    url: '/booking/detail/:bookingId',
+    views: {
+      'booking-detail': {
+         templateUrl: 'templates/common/booking_detail.html',
+         controller: 'bookingDetailCtrl'
+      }
+    }
+  })
+
 
     // exam
   .state('exam', {

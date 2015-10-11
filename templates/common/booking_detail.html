@@ -1,71 +1,100 @@
-<ion-view class="booking-view">
 
+<ion-nav-bar>
+</ion-nav-bar>
 
-    <ion-content>
+<div class="header">
+      <div class="hdlogo"><img src="teImg/logotop.png" /></div>
+      <div class="hdrback" ng-click="goBack()"></div>
+</div>
+
+<ion-view>
+    <ion-content class="content cls">
+   
       <div class="main1">
 
-        <div class="gnr2dadv"><!--内容右侧开始-->
-           
-            <!-- 内容top阴影 -->
-              <div class="gnr2ma">  
-                  <div class="khxqtop"><!--客户详情-s-->
-                    
-                     <div class="khxqpf"><img src="teImg/ghnr1lef.png" /></div> <!--左边-s-->
-                     <div class="khxqpr">
-                     
-                         <p class="khxqrp1">
-                            <span>王海先生</span>
-                            <em>白金用户</em>
-                            <i>已认证</i>
-                            <b>财商测试得分：80</b>
-                         </p>
-                         <p class="khxqrp2">
-                            <span>电话：1300004500</span>
-                            <em>微信：wanghai223</em>   
-                         </p>
-                         <p class="khxqrp3"><span>邮箱：123455@gmail.com</span></p>
-                     </div><!--右边-s-->
-                  </div><!--客户详情-e-->
-                  
-                  <div class="xyglcsqtop" ng-click="showCommonProduct()"><em>当前预约产品</em></div>
-
-                  <div class="xyglcsrrdv"> <!--我的预约详情-->
-                      <div class="xxlsrrp" ng-click="showProduct(booking.product)">
-                        <span class="xxlsyyss1">推荐</span>
-                        <span class="xxlsyyss2">热销</span>
-                        <em>{{booking.product.issuer}}</em>
-                        <i>返佣比2%</i>
-                        <b>完成服务</b>
+            <!-- 中间内容-s --> 
+            <div class="twdyydvda2">  
+            
+                 <div class="tgcstopnr13">
+                      <div class="tgcsnr1f">
+                        <img src="teImg/gnr2nrclef1.jpg" />
+                        <span>王海</span>
                       </div>
-                      
-                      <div class="ssxqbmdv" ng-click="showProduct(booking.product)">
-                          <span class="ssxqmf1">63%</span>
-                          <p><span>10.50%</span> <em>预期年化</em></p>
-                          <p><span>120天</span> <em>理财期限</em></p>
-                          <div class="xxxqrr"> 
-                            <span>目标规模 <em> 36,500.00 </em>万元</span>
-                            <span>认购费用 <em> 100 </em>万起</span>
-                            <span>剩余时间 <em> 21 </em>天</span>
-                          </div>
-                          
-                      </div> 
+                      <div class="tgnr1r">
+                         <p class="tgxnr1p1"><span>高级理财师</span> <em>已认证</em> <i>财商测试得分：80</i></p>
+                         <b>电话：1300004500</b>
+                         <b>微信：wanghai223</b>
+                         <b>邮箱：123455@gmail.com</b>
+                      </div>
+                  </div>
+                  
+                  <div class="xyglcsqtop"><em>预约产品</em></div><!--理财师top-e-->
+                  
+             </div> 
 
-                      
-                  </div>  <!--我的预约详情-->
+             <div class="xtuolbdv" ng-click="goProduct1(booking.product.id)">  
+              <!--<a href="#/common/product/detail/{{product.id}}">-->
+              <div class="xxlsrrp">
+                 <span class="xxlsyyss1">推荐</span>
+                 <span class="xxlsyyss2">热销</span>
+                 <i>{{booking.product.issuer}}</i>
+               </div>   
+               <div class="ssxqbmdv">
+                    <span class="ssxqmf1">63%</span>
+                    <p><span>10.50%</span> <em>预期年化</em></p>
+                    <p><span>120天</span> <em>理财期限</em></p>
+                    <div class="xxxqrr"> 
+                      <span>目标规模 <em> 36,500.00 </em>万元</span>
+                      <span>认购费用 <em> 100 </em>万起</span>
+                      <span>剩余时间 <em> 21 </em>天</span>
+                    </div>
+                </div>  
+              <!--</a>-->
+           </div> 
 
-
-              </div> <!--gnr2ma-->
-            </div> <!--gjxnrtoppy-->
-          </div> <!--gnr2dadv-->
+                 <!--
+              <div class="xyglcsrrdvtt">
+                <div class="xxlsrrpt">
+                  <span class="xxlsyyss1t">推荐</span>
+                  <span class="xxlsyyss2t">热销</span>
+                  <em>粤财·瀚信中鼎盈丰2期</em>
+                  <i>返佣比2%</i>
+                
+                </div>
+                <div class="ssxqbmdv">
+                      <span class="ssxqmf1">63%</span>
+                      <p><span>10.50%</span> <em>预期年化</em></p>
+                      <p><span>120天</span> <em>理财期限</em></p>
+                      <div class="xxxqrr"> 
+                        <span>目标规模 <em> 36,500.00 </em>万元</span>
+                        <span>认购费用 <em> 100 </em>万起</span>
+                        <span>剩余时间 <em> 21 </em>天</span>
+                      </div>
+                </div>
+              </div>  
+              -->
+              
+          <div class="bxxqbmdg">
+             <a class="fxyycpsg" href="#">接受预约</a> 
+             <a class="fxyycpyy" href="#">完成服务</a> 
+          </div>    
+            <!-- 中间内容-e -->
 
       </div> <!--main1-->
+
+
     </ion-content>
-  <multiple-views-support width="75%" />
 </ion-view>
 
 
 
 
 
+
+
+            
+
+              
+              
 
 

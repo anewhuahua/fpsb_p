@@ -257,6 +257,7 @@ a:visited {
 
 .fxyycpsg{float:left;width:50%; height:1rem; background:#d32e00;color:#fff !important;}
 .fxyycpyy{float:left;width:50%; height:1rem;background:#e79700;color:#fff !important;}
+.fxyycpyfull{float:left;width:100%; height:1rem;background:#e79700;color:#fff !important;}
 
 .xtbldv{background:url(../teImg/xtblbj.png) no-repeat; background-size:cover; width:2.95rem; height:2.95rem; position:relative; margin:0.35rem auto 0.05rem auto;}
 .xtbldv>i{display:block; position:absolute; top:1.3rem; left:0rem; text-align:center;font-size:0.7rem; line-height:0.7rem; color:#e89440; width:100%;}
@@ -571,7 +572,7 @@ a:visited {
 .twdyydvda2{width:95%; margin:auto;}
 .twdyydvda3{width:95%; margin:auto; margin-bottom:0.3rem;}
 .twdyydvda{width:95%; margin:0.3rem auto;}
-.wdyydv{ width:100%; height:2.1rem; background:#fff; border-radius:0.03rem; overflow:hidden; margin-bottom:0.15rem;}
+.wdyydv{ width:100%; background:#fff; border-radius:0.03rem; overflow:hidden; margin-bottom:0.15rem;}
 .wdyydvtop{width:100%; height:0.49rem; border-bottom:1px #f3f2f5 solid; padding:0rem 0.43rem 0rem 0.35rem; overflow:hidden;}
 .wdyydvtop>span{ float:left;font-size:0.26rem;color:#8e8a95; line-height:0.49rem;}
 .wdyydvtop>em{ float:right;font-size:0.26rem;color:#f20000; line-height:0.49rem;}

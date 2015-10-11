@@ -194,7 +194,7 @@ angular.module('rest.service', [])
           var req = {
               method: 'GET',
               url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
-              '/bookings?state=' + state + '&offset=' + offset + '&limit=' + limit,
+              '/bookings?state=' + state + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
               headers: {
                 'Content-Type': 'application/json'
               }
