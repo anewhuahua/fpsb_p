@@ -54,7 +54,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews', 'starter.
   $stateProvider
   .state('product', {
     url: '/product',
-    views: {
+    views: {生化
       'product-detail': {
          templateUrl: 'templates/product.html',
          controller: 'productDetailCtrl'
@@ -89,10 +89,19 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews', 'starter.
       'main-products': {
          templateUrl: 'templates/main/products.html',
          controller: 'mainProductsCtrl'
-      }
+      },
     }
   })
 
+  .state('main.shenghua',{
+    url:'/shenghua',
+    views:{
+      'main-shenghua':{
+        templateUrl:'templates/exam/shenghua.html',
+        controller:'mainsShenghuaCtrl'
+      }
+    }
+  })
 
 
   .state('main.guest', {
