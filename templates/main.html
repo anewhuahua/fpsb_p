@@ -15,6 +15,11 @@ navigation history that also transitions its views in and out.
 -->
 
 
+
+
+
+
+
 <!--提示页-->
 <div ng-switch on="data.warning.status">
 
@@ -126,6 +131,7 @@ navigation history that also transitions its views in and out.
                 <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
              </p>
           </div>
+
           
           <input type="submit"  class="ccxxdvtj" value="提交申购" ng-click="addOrder()"/>
           
@@ -194,6 +200,10 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="main-products"></ion-nav-view>
   </ion-tab>
 
+<!--Products Tab-->
+<ion-tab title="shenghua" icon-off="ion-ios-search" icon-on="ion-ios-search-strong" href="#/main/templates/exam/shenghua">
+<ion-nav-view name="main-shenghua"></ion-nav-view>
+</ion-tab>
   <!-- ToolBox Tab -->
 <!--
   <ion-tab title="我的" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/main/my" ng-switch-when='customer'>
